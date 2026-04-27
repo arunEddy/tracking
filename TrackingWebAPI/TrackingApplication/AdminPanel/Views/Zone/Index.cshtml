@@ -1,0 +1,579 @@
+﻿@{
+    ViewData["Title"] = "Zone Master";
+}
+
+<h2>Zone Master Page</h2>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<input type="hidden" id="zoneId">
+
+<div class="modal fade" id="zoneModal">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">Zone</h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <input type="hidden" id="zoneId">
+
+                <div class="mb-2">
+                    <label>Zone Name</label>
+                    <input type="text" id="zoneName" class="form-control">
+                </div>
+
+                <div class="mb-2">
+                    @* <label>Zone Type</label> *@
+                    @*  <input type="text" id="isInternational" class="form-control"> *@
+                    <input type="checkbox" id="isInternational"> International
+                </div>
+
+                <div class="mb-2">
+                    <input type="checkbox" id="isActive"> Active
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-success" onclick="saveZone()">Save</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<button class="btn btn-success mb-3" onclick="openAddModal()">Add Zone</button>
+
+<table id="zoneTable" class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Zone</th>
+            <th>International</th>
+            <th>Active</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody></tbody>
+
+</table>
+
+<div id="pagination"></div>
+@* <div class="card">
+
+   @*  <div class="card-header">
+
+        Zone Master
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <input type="hidden" id="zoneId">
+
+                <label>Zone Name</label>
+                <input type="text" id="zoneName" class="form-control">
+
+            </div>
+
+            <div class="col-md-3 mt-4">
+                <input type="checkbox" id="isInternational"> International
+
+
+            </div>
+           
+            <div class="col-md-3 mt-4">
+
+                <button onclick="saveZone()" class="btn btn-success w-100">Save</button>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <button onclick="loadZone()">Load Countries</button>
+
+                <table class="table" id="tblZone">
+                </table>
+
+                   </div>
+            
+
+    </div>
+
+</div>
+</div> 
+    <script>
+
+        function loadZone(){
+
+        // fetch('http://localhost:7258/api/Zone')
+                fetch('https://api.magnumexpress.in/api/Zone')
+
+        .then(res => res.json())
+
+        .then(data => {
+
+        let html = "";
+
+        data.forEach(c => {
+
+        html += `<tr>
+        <td>${c.zoneId}</td>
+        <td>${c.zoneName}</td>
+        <td>${c.isInternational}</td>
+        <td>${c.IsActive}</td>
+        </tr>`;
+
+        });
+
+        document.getElementById("tblZone").innerHTML = html;
+
+        });
+
+        }
+
+   
+    function saveZone(){
+
+let zone = {
+
+zoneName: document.getElementById("zoneName").value,
+    isInternational: document.getElementById("isInternational").checked,
+isActive: "1"
+
+};
+
+fetch('https://api.magnumexpress.in/api/Zone', {
+
+method: "POST",
+headers: {
+
+'Content-Type': 'application/json'
+
+},
+body: JSON.stringify(zone)
+
+})
+.then(res => res.json())
+.then(data => {
+
+alert("Saved Successfully");
+
+loadZone();
+
+});
+
+} // fetch('http://localhost:7258/api/Zone')
+                fetch('https://api.magnumexpress.in/api/Zone')
+</script>*@
+<div class="modal fade" id="zoneModal">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">Zone</h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <input type="hidden" id="zoneId">
+
+                <div class="mb-2">
+                    <label>Zone Name</label>
+                    <input type="text" id="zoneName" class="form-control">
+                </div>
+
+                <div class="mb-2">
+                    @* <label>Zone Type</label> *@
+                    <input type="checkbox" id="isInternational"> International
+                </div>
+
+                <div class="mb-2">
+                    <input type="checkbox" id="isActive"> Active
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-success" onclick="saveZone()">Save</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+    let currentPage = 1;
+
+    function loadZone(page=1){
+
+    currentPage = page;
+    alert(page)
+
+    let search = $("#search").val();
+
+        $.get(`http://localhost:7258/api/Zone?search=${search}&page=${page}`, function(res){
+
+    let html="";
+
+    res.data.forEach(c=>{
+
+    html += `
+    <tr>
+
+        <td>${c.zoneId}</td>
+        <td>${c.zoneName}</td>
+        <td>${c.isInternational ? "International" : "Domestic"}</td>
+        <td>${c.isActive}</td>
+
+        <td>
+
+            <button class="btn btn-sm btn-primary"
+                    onclick="editZone(${c.zoneId},'${c.zoneName}',${c.isActive})">
+
+                ✏️
+            </button>
+
+            <button class="btn btn-sm btn-danger"
+                    onclick="deleteZone(${c.zoneId})">
+
+                🗑
+            </button>
+
+        </td>
+
+    </tr>`;
+
+    });
+
+    $("#tblZone").html(html);
+
+    createPagination(res.total,page);
+
+    });
+
+    }
+        function saveZone(){
+            debugger;
+            let zoneId = $("#zoneId").val();
+
+        let zone = {
+
+        zoneName: $("#zoneName").val(),
+                isInternational: $("#isInternational").prop("checked"),
+        isActive: $("#isActive").prop("checked")
+
+        };
+
+            if(zoneId==""){
+
+        $.ajax({
+
+            url:"http://localhost:7258/api/Zone",
+        method:"POST",
+        contentType:"application/json",
+        data: JSON.stringify(zone),
+        success:function(){
+
+        loadZone(currentPage);
+
+        }
+             ,error: function () {
+
+                                alert("Error saving state");
+
+                            }
+        });
+
+        }
+        else{
+
+        $.ajax({
+
+                url:`http://localhost:7258/api/Zone/${zoneId}`,
+        method:"PUT",
+        contentType:"application/json",
+        data: JSON.stringify(zone),
+        success:function(){
+
+        loadZone(currentPage);
+
+        }
+             ,error: function () {
+
+                            alert("Error saving state");
+
+                        }
+
+        });
+
+        }
+
+        }
+        @*Edit function*@
+                function editZone(zoneId,name,isActive){
+
+            $("#zoneId").val(zoneId);
+        $("#zoneName").val(name);
+        $("#isActive").prop("checked",isActive);
+
+        }
+
+            @*Delete function*@
+                function deleteZone(zoneId){
+
+        if(confirm("Delete this record?")){
+
+        $.ajax({
+
+                url:`http://localhost:7258/api/Zone/${zoneId}`,
+        method:"DELETE",
+        success:function(){
+
+        loadZone(currentPage);
+
+        }
+
+        });
+
+        }
+
+        }
+
+            function createPagination(total,page){
+
+        let pageSize=5;
+
+        let pages = Math.ceil(total/pageSize);
+
+        let html="";
+
+        for(let i=1;i<=pages;i++){
+
+        html += `<button onclick="loadZone(${i})">${i}</button>`;
+
+        }
+
+        $("#pagination").html(html);
+
+        }
+
+            let table;
+
+        $(document).ready(function(){
+
+        loadZone();
+
+        });
+
+        function loadZone(){
+
+        apiService.get("http://localhost:7258/api/Zone")
+        .then(data=>{
+
+        if(table){
+        table.destroy();
+        }
+
+        let html="";
+
+        data.forEach(c=>{
+
+        html+=`<tr>
+
+        <td>${c.zoneId}</td>
+        <td>${c.zoneName}</td>
+    <td>${c.isInternational ? "International" : "Domestic"}</td>
+        <td>${c.isActive}</td>
+
+        <td>
+
+        <button class="btn btn-sm btn-primary"
+        onclick="editZone(${c.zoneId},'${c.zoneName}','${c.isInternational}',${c.isActive})">
+
+        ✏️
+        </button>
+
+        <button class="btn btn-sm btn-danger"
+        onclick="deleteZone(${c.zoneId})">
+
+        🗑
+        </button>
+
+        </td>
+
+        </tr>`;
+
+        });
+
+        $("#zoneTable tbody").html(html);
+
+        table = $("#zoneTable").DataTable();
+
+        });
+
+        }
+
+
+            function openAddModal(){
+
+        $("#zoneId").val("");
+        $("#zoneName").val("");
+            $("#isInternational").prop("checked",true);
+        $("#isActive").prop("checked",true);
+
+        $("#zoneModal").modal("show");
+
+        }
+
+
+                function editZone(zoneId,name,type,isActive){
+
+            $("#zoneId").val(zoneId);
+        $("#zoneName").val(name);
+                $("#isInternational").prop("checked",isInternational);
+        $("#isActive").prop("checked",isActive);
+
+        $("#zoneModal").modal("show");
+
+        }
+
+        //Save
+            function saveZone(){
+
+            let zoneId=$("#zoneId").val();
+
+        let zone={
+                            //zoneId:$("#zoneId").val(),
+        zoneName:$("#zoneName").val(),
+            isInternational:$("#isInternational").prop("checked"),
+        isActive:$("#isActive").prop("checked")
+
+        };
+
+            if(zoneId==""){
+
+        apiService.post("http://localhost:7258/api/Zone",zone)
+        .then(()=>{
+
+        $("#zoneModal").modal("hide");
+        loadZone();
+
+        });
+
+        }
+        else{
+
+        apiService.put(`http://localhost:7258/api/Zone/${zoneId}`,zone)
+        .then(()=>{
+
+        $("#zoneModal").modal("hide");
+        loadZone();
+
+        });
+
+        }
+
+        }
+
+        //Delete
+            function deleteZone(zoneId){
+
+    Swal.fire({
+
+    title:"Are you sure?",
+    text:"This record will be deleted!",
+    icon:"warning",
+    showCancelButton:true,
+    confirmButtonText:"Yes delete"
+
+    }).then((result)=>{
+
+    if(result.isConfirmed){
+
+        apiService.delete(`http://localhost:7258/api/Zone/${zoneId}`)
+    .then(()=>{
+
+    Swal.fire("Deleted!","Record deleted.","success");
+
+    loadZone();
+
+    });
+
+    }
+
+    });
+
+    }
+
+        const apiService = {
+
+        get: function(url){
+        return $.get(url);
+        },
+
+        post: function(url,data){
+        return $.ajax({
+        url:url,
+        method:"POST",
+        contentType:"application/json",
+        data:JSON.stringify(data)
+        });
+        },
+
+        put: function(url,data){
+        return $.ajax({
+        url:url,
+        method:"PUT",
+        contentType:"application/json",
+        data:JSON.stringify(data)
+        });
+        },
+
+        delete: function(url){
+        return $.ajax({
+        url:url,
+        method:"DELETE"
+        });
+        }
+
+        };
+</script>

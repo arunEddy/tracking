@@ -1,0 +1,222 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="row g-3">
+
+    <div class="col-lg-2 col-md-4 col-6">
+        <div class="dashboard-card card-green text-center">
+            <h3>2726</h3>
+            <p>Booking</p>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-md-4 col-6">
+        <div class="dashboard-card card-yellow text-center">
+            <h3>75497</h3>
+            <p>Pending Delivery</p>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-md-4 col-6">
+        <div class="dashboard-card card-orange text-center">
+            <h3>4183</h3>
+            <p>Load Pre Alert</p>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-md-4 col-6">
+        <div class="dashboard-card card-pink text-center">
+            <h3>594</h3>
+            <p>Reverse Pickup</p>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-md-4 col-6">
+        <div class="dashboard-card card-blue text-center">
+            <h3>3</h3>
+            <p>Case Open</p>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-md-4 col-6">
+        <div class="dashboard-card card-red text-center">
+            <h3>0</h3>
+            <p>Alert</p>
+        </div>
+    </div>
+
+</div>
+
+<hr>
+
+<div class="row mt-4">
+
+    <!-- CHART 1 -->
+
+    <div class="col-lg-6">
+
+        <div class="chart-box">
+
+            <h5>Booking Chart</h5>
+
+            <canvas id="chart1"></canvas>
+
+        </div>
+
+    </div>
+
+    <!-- CHART 2 -->
+
+    <div class="col-lg-4">
+
+        <div class="chart-box">
+
+            <h5>Yearly Booking</h5>
+
+            <canvas id="chart2"></canvas>
+
+        </div>
+
+    </div>
+
+    <!-- CALENDAR -->
+
+    <div class="col-lg-2">
+
+        <div class="calendar-box">
+
+            <h3 id="clock"></h3>
+
+            <p id="date"></p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<hr>
+
+<div class="row g-3">
+
+    <div class="col-lg-2 col-md-4 col-6">
+
+        <div class="dashboard-card text-center" style="background:#9c27b0">
+
+            <h3>13729</h3>
+            <p>COD Alert</p>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-2 col-md-4 col-6">
+
+        <div class="dashboard-card text-center" style="background:#3f51b5">
+
+            <h3>88</h3>
+            <p>EDD Alert</p>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-2 col-md-4 col-6">
+
+        <div class="dashboard-card text-center" style="background:#673ab7">
+
+            <h3>0</h3>
+            <p>Unused EWB</p>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-2 col-md-4 col-6">
+
+        <div class="dashboard-card text-center" style="background:#e91e63">
+
+            <h3>0</h3>
+            <p>To Be Expired</p>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-2 col-md-4 col-6">
+
+        <div class="dashboard-card text-center" style="background:#f44336">
+
+            <h3>0</h3>
+            <p>Expired EWB</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    /* Chart 1 */
+
+    new Chart(document.getElementById("chart1"), {
+
+    type: 'bar',
+
+    data: {
+
+    labels:['1','2','3','4','5','6'],
+
+    datasets:[{
+
+    label:'Booking',
+
+    data:[112,420,368,134,626,603]
+
+    }]
+
+    }
+
+    });
+
+    /* Chart 2 */
+
+    new Chart(document.getElementById("chart2"), {
+
+    type: 'bar',
+
+    data: {
+
+    labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+
+    datasets:[{
+
+    label:'Booking',
+
+    data:[15073,15493,17246,15984,14661,15427,14994,12856,16829,13725,15114,17543]
+
+    }]
+
+    }
+
+    });
+
+    /* CLOCK */
+
+    function updateClock(){
+
+    var now=new Date();
+
+    document.getElementById("clock").innerHTML=now.toLocaleTimeString();
+
+    document.getElementById("date").innerHTML=now.toDateString();
+
+    }
+
+    setInterval(updateClock,1000);
+
+</script>

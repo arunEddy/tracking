@@ -1,0 +1,70 @@
+D:\DALCLASS\bin\Debug\net8.0\DALCLASS.deps.json
+D:\DALCLASS\bin\Debug\net8.0\DALCLASS.dll
+D:\DALCLASS\bin\Debug\net8.0\DALCLASS.pdb
+D:\DALCLASS\obj\Debug\net8.0\DALCLASS.GeneratedMSBuildEditorConfig.editorconfig
+D:\DALCLASS\obj\Debug\net8.0\DALCLASS.AssemblyInfoInputs.cache
+D:\DALCLASS\obj\Debug\net8.0\DALCLASS.AssemblyInfo.cs
+D:\DALCLASS\obj\Debug\net8.0\DALCLASS.csproj.CoreCompileInputs.cache
+D:\DALCLASS\obj\Debug\net8.0\DALCLASS.dll
+D:\DALCLASS\obj\Debug\net8.0\refint\DALCLASS.dll
+D:\DALCLASS\obj\Debug\net8.0\DALCLASS.pdb
+D:\DALCLASS\obj\Debug\net8.0\ref\DALCLASS.dll
+D:\DALCLASS\bin\Debug\net8.0\DALCLASS.runtimeconfig.json
+D:\DALCLASS\obj\Debug\net8.0\DALCLASS.csproj.AssemblyReference.cache
+D:\DALCLASS\obj\Debug\net8.0\DALCLASS.genruntimeconfig.cache
+D:\TrackingApplication\DALCLASS\bin\Debug\net8.0\DALCLASS.deps.json
+D:\TrackingApplication\DALCLASS\bin\Debug\net8.0\DALCLASS.runtimeconfig.json
+D:\TrackingApplication\DALCLASS\bin\Debug\net8.0\DALCLASS.dll
+D:\TrackingApplication\DALCLASS\bin\Debug\net8.0\DALCLASS.pdb
+D:\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.csproj.AssemblyReference.cache
+D:\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.GeneratedMSBuildEditorConfig.editorconfig
+D:\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.AssemblyInfoInputs.cache
+D:\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.AssemblyInfo.cs
+D:\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.csproj.CoreCompileInputs.cache
+D:\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.dll
+D:\TrackingApplication\DALCLASS\obj\Debug\net8.0\refint\DALCLASS.dll
+D:\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.pdb
+D:\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.genruntimeconfig.cache
+D:\TrackingApplication\DALCLASS\obj\Debug\net8.0\ref\DALCLASS.dll
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\bin\Debug\net8.0\DALCLASS.deps.json
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\bin\Debug\net8.0\DALCLASS.runtimeconfig.json
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\bin\Debug\net8.0\DALCLASS.dll
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\bin\Debug\net8.0\DALCLASS.pdb
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.csproj.AssemblyReference.cache
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.AssemblyInfoInputs.cache
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.AssemblyInfo.cs
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.csproj.CoreCompileInputs.cache
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.dll
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Debug\net8.0\refint\DALCLASS.dll
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.pdb
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Debug\net8.0\DALCLASS.genruntimeconfig.cache
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Debug\net8.0\ref\DALCLASS.dll
+C:\Users\Arun Kumar\Downloads\TrackingArunFile\DALCLASS\bin\Debug\net8.0\DALCLASS.deps.json
+C:\Users\Arun Kumar\Downloads\TrackingArunFile\DALCLASS\bin\Debug\net8.0\DALCLASS.runtimeconfig.json
+C:\Users\Arun Kumar\Downloads\TrackingArunFile\DALCLASS\bin\Debug\net8.0\DALCLASS.dll
+C:\Users\Arun Kumar\Downloads\TrackingArunFile\DALCLASS\bin\Debug\net8.0\DALCLASS.pdb
+C:\Users\Arun Kumar\Downloads\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.csproj.AssemblyReference.cache
+C:\Users\Arun Kumar\Downloads\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Arun Kumar\Downloads\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.AssemblyInfoInputs.cache
+C:\Users\Arun Kumar\Downloads\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.AssemblyInfo.cs
+C:\Users\Arun Kumar\Downloads\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.csproj.CoreCompileInputs.cache
+C:\Users\Arun Kumar\Downloads\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.dll
+C:\Users\Arun Kumar\Downloads\TrackingArunFile\DALCLASS\obj\Debug\net8.0\refint\DALCLASS.dll
+C:\Users\Arun Kumar\Downloads\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.pdb
+C:\Users\Arun Kumar\Downloads\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.genruntimeconfig.cache
+C:\Users\Arun Kumar\Downloads\TrackingArunFile\DALCLASS\obj\Debug\net8.0\ref\DALCLASS.dll
+D:\TrackingArunFile\DALCLASS\bin\Debug\net8.0\DALCLASS.deps.json
+D:\TrackingArunFile\DALCLASS\bin\Debug\net8.0\DALCLASS.runtimeconfig.json
+D:\TrackingArunFile\DALCLASS\bin\Debug\net8.0\DALCLASS.dll
+D:\TrackingArunFile\DALCLASS\bin\Debug\net8.0\DALCLASS.pdb
+D:\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.csproj.AssemblyReference.cache
+D:\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.GeneratedMSBuildEditorConfig.editorconfig
+D:\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.AssemblyInfoInputs.cache
+D:\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.AssemblyInfo.cs
+D:\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.csproj.CoreCompileInputs.cache
+D:\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.dll
+D:\TrackingArunFile\DALCLASS\obj\Debug\net8.0\refint\DALCLASS.dll
+D:\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.pdb
+D:\TrackingArunFile\DALCLASS\obj\Debug\net8.0\DALCLASS.genruntimeconfig.cache
+D:\TrackingArunFile\DALCLASS\obj\Debug\net8.0\ref\DALCLASS.dll

@@ -1,0 +1,209 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = AdminPanel
+build_property.RootNamespace = AdminPanel
+build_property.ProjectDir = C:\Users\Arun Kumar\Downloads\TrackingArunFile\AdminPanel\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Arun Kumar\Downloads\TrackingArunFile\AdminPanel
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Pages/Country/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRyeVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/AirlineMaster/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWlybGluZU1hc3RlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/AWBStockRequest/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVdCU3RvY2tSZXF1ZXN0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/CancelAWB/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuY2VsQVdCXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/City/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2l0eVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/Country/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyeVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/CustomerWiseReBookDeliveryAddress/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJXaXNlUmVCb29rRGVsaXZlcnlBZGRyZXNzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/DeliveryBoyMaster/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVsaXZlcnlCb3lNYXN0ZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/AWBPrint.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXEFXQlByaW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/BookingScanLogisticEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXEJvb2tpbmdTY2FuTG9naXN0aWNFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/BookingScanNormal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXEJvb2tpbmdTY2FuTm9ybWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/BookingScanNormalEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXEJvb2tpbmdTY2FuTm9ybWFsRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/CashBooking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXENhc2hCb29raW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/EDPEditing.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXEVEUEVkaXRpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/EDPEntry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXEVEUEVudHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/INSCANLOGISTIC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXElOU0NBTkxPR0lTVElDLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/OperationDataImport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXE9wZXJhdGlvbkRhdGFJbXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/ReBookingScan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXFJlQm9va2luZ1NjYW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/ReturnBooking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXFJldHVybkJvb2tpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/UrgentDeliveryAlertEntry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXFVyZ2VudERlbGl2ZXJ5QWxlcnRFbnRyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/UrgentDeliveryAlertUpdation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXFVyZ2VudERlbGl2ZXJ5QWxlcnRVcGRhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/WMSStockUploadWithCustomerWise.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXFdNU1N0b2NrVXBsb2FkV2l0aEN1c3RvbWVyV2lzZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/OfficeRequest/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmaWNlUmVxdWVzdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/State/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/StockIssueToEmployee/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tJc3N1ZVRvRW1wbG95ZWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/StockIssue/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tJc3N1ZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/StockOut/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tPdXRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/StockPaymentVoucher/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tQYXltZW50Vm91Y2hlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/StockPurchase/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tQdXJjaGFzZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/StockReturn/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tSZXR1cm5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/StockTransfer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tUcmFuc2ZlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/TransportMaster/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNwb3J0TWFzdGVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/VehicleMaster/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWNsZU1hc3RlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/VendorMaster/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZG9yTWFzdGVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/Zone/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWm9uZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-zs5wft6i3j
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-cxfutip2kg

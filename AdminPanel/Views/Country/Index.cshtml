@@ -1,0 +1,579 @@
+﻿@{
+    ViewData["Title"] = "Country Master";
+}
+
+<h2>Country Master Page</h2>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<input type="hidden" id="countryId">
+
+<div class="modal fade" id="countryModal">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">Country</h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <input type="hidden" id="countryId">
+
+                <div class="mb-2">
+                    <label>Country Name</label>
+                    <input type="text" id="countryName" class="form-control">
+                </div>
+
+                <div class="mb-2">
+                    @* <label>Country Type</label> *@
+                   @*  <input type="text" id="isInternational" class="form-control"> *@
+                    <input type="checkbox" id="isInternational"> International
+                </div>
+
+                <div class="mb-2">
+                    <input type="checkbox" id="isActive"> Active
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-success" onclick="saveCountry()">Save</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<button class="btn btn-success mb-3" onclick="openAddModal()">Add Country</button>
+
+<table id="countryTable" class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Country</th>
+            <th>International</th>
+            <th>Active</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody></tbody>
+
+</table>
+
+<div id="pagination"></div>
+@* <div class="card">
+
+   @*  <div class="card-header">
+
+        Country Master
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <input type="hidden" id="countryId">
+
+                <label>Country Name</label>
+                <input type="text" id="countryName" class="form-control">
+
+            </div>
+
+            <div class="col-md-3 mt-4">
+                <input type="checkbox" id="isInternational"> International
+
+
+            </div>
+           
+            <div class="col-md-3 mt-4">
+
+                <button onclick="saveCountry()" class="btn btn-success w-100">Save</button>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <button onclick="loadCountries()">Load Countries</button>
+
+                <table class="table" id="tblCountry">
+                </table>
+
+                   </div>
+            
+
+    </div>
+
+</div>
+</div> 
+    <script>
+
+        function loadCountries(){
+
+        // fetch('http://localhost:7258/api/Country')
+                fetch('https://api.magnumexpress.in/api/Country')
+
+        .then(res => res.json())
+
+        .then(data => {
+
+        let html = "";
+
+        data.forEach(c => {
+
+        html += `<tr>
+        <td>${c.countryId}</td>
+        <td>${c.countryName}</td>
+        <td>${c.isInternational}</td>
+        <td>${c.IsActive}</td>
+        </tr>`;
+
+        });
+
+        document.getElementById("tblCountry").innerHTML = html;
+
+        });
+
+        }
+
+   
+    function saveCountry(){
+
+let country = {
+
+countryName: document.getElementById("countryName").value,
+    isInternational: document.getElementById("isInternational").checked,
+isActive: "1"
+
+};
+
+fetch('https://api.magnumexpress.in/api/Country', {
+
+method: "POST",
+headers: {
+
+'Content-Type': 'application/json'
+
+},
+body: JSON.stringify(country)
+
+})
+.then(res => res.json())
+.then(data => {
+
+alert("Saved Successfully");
+
+loadCountries();
+
+});
+
+} // fetch('http://localhost:7258/api/Country')
+                fetch('https://api.magnumexpress.in/api/Country')
+</script>*@
+<div class="modal fade" id="countryModal">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">Country</h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <input type="hidden" id="countryId">
+
+                <div class="mb-2">
+                    <label>Country Name</label>
+                    <input type="text" id="countryName" class="form-control">
+                </div>
+
+                <div class="mb-2">
+                    @* <label>Country Type</label> *@
+                    <input type="checkbox" id="isInternational"> International
+                </div>
+
+                <div class="mb-2">
+                    <input type="checkbox" id="isActive"> Active
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-success" onclick="saveCountry()">Save</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+let currentPage = 1;
+
+function loadCountries(page=1){
+
+currentPage = page;
+alert(page)
+
+let search = $("#search").val();
+
+    $.get(`http://localhost:7258/api/Country?search=${search}&page=${page}`, function(res){
+
+let html="";
+
+res.data.forEach(c=>{
+
+html += `
+<tr>
+
+    <td>${c.countryId}</td>
+    <td>${c.countryName}</td>
+    <td>${c.isInternational ? "International" : "Domestic"}</td>
+    <td>${c.isActive}</td>
+
+    <td>
+
+        <button class="btn btn-sm btn-primary"
+                onclick="editCountry(${c.countryId},'${c.countryName}',${c.isActive})">
+
+            ✏️
+        </button>
+
+        <button class="btn btn-sm btn-danger"
+                onclick="deleteCountry(${c.countryId})">
+
+            🗑
+        </button>
+
+    </td>
+
+</tr>`;
+
+});
+
+$("#tblCountry").html(html);
+
+createPagination(res.total,page);
+
+});
+
+}
+    function saveCountry(){
+        debugger;
+        let countryId = $("#countryId").val();
+
+    let country = {
+
+    countryName: $("#countryName").val(),
+            isInternational: $("#isInternational").prop("checked"),
+    isActive: $("#isActive").prop("checked")
+
+    };
+
+        if(countryId==""){
+
+    $.ajax({
+
+        url:"http://localhost:7258/api/Country",
+    method:"POST",
+    contentType:"application/json",
+    data: JSON.stringify(country),
+    success:function(){
+
+    loadCountries(currentPage);
+
+    }
+         ,error: function () {
+
+                            alert("Error saving state");
+
+                        }
+    });
+
+    }
+    else{
+
+    $.ajax({
+
+            url:`http://localhost:7258/api/Country/${countryId}`,
+    method:"PUT",
+    contentType:"application/json",
+    data: JSON.stringify(country),
+    success:function(){
+
+    loadCountries(currentPage);
+
+    }
+         ,error: function () {
+
+                        alert("Error saving state");
+
+                    }
+
+    });
+
+    }
+
+    }
+    @*Edit function*@
+            function editCountry(countryId,name,isActive){
+
+        $("#countryId").val(countryId);
+    $("#countryName").val(name);
+    $("#isActive").prop("checked",isActive);
+
+    }
+
+        @*Delete function*@
+            function deleteCountry(countryId){
+
+    if(confirm("Delete this record?")){
+
+    $.ajax({
+
+            url:`http://localhost:7258/api/Country/${countryId}`,
+    method:"DELETE",
+    success:function(){
+
+    loadCountries(currentPage);
+
+    }
+
+    });
+
+    }
+
+    }
+
+        function createPagination(total,page){
+
+    let pageSize=5;
+
+    let pages = Math.ceil(total/pageSize);
+
+    let html="";
+
+    for(let i=1;i<=pages;i++){
+
+    html += `<button onclick="loadCountries(${i})">${i}</button>`;
+
+    }
+
+    $("#pagination").html(html);
+
+    }
+
+        let table;
+
+    $(document).ready(function(){
+
+    loadCountries();
+
+    });
+
+    function loadCountries(){
+
+    apiService.get("http://localhost:7258/api/Country")
+    .then(data=>{
+
+    if(table){
+    table.destroy();
+    }
+
+    let html="";
+
+    data.forEach(c=>{
+
+    html+=`<tr>
+
+    <td>${c.countryId}</td>
+    <td>${c.countryName}</td>
+    <td>${c.isInternational ? "International" : "Domestic"}</td>
+    <td>${c.isActive}</td>
+
+    <td>
+
+    <button class="btn btn-sm btn-primary"
+    onclick="editCountry(${c.countryId},'${c.countryName}','${c.isInternational}',${c.isActive})">
+
+    ✏️
+    </button>
+
+    <button class="btn btn-sm btn-danger"
+    onclick="deleteCountry(${c.countryId})">
+
+    🗑
+    </button>
+
+    </td>
+
+    </tr>`;
+
+    });
+
+    $("#countryTable tbody").html(html);
+
+    table = $("#countryTable").DataTable();
+
+    });
+
+    }
+
+
+        function openAddModal(){
+
+    $("#countryId").val("");
+    $("#countryName").val("");
+        $("#isInternational").prop("checked",true);
+    $("#isActive").prop("checked",true);
+
+    $("#countryModal").modal("show");
+
+    }
+
+
+            function editCountry(countryId,name,type,isActive){
+
+        $("#countryId").val(countryId);
+    $("#countryName").val(name);
+            $("#isInternational").prop("checked",isInternational);
+    $("#isActive").prop("checked",isActive);
+
+    $("#countryModal").modal("show");
+
+    }
+
+    //Save
+        function saveCountry(){
+            
+        let countryId=$("#countryId").val();
+
+    let country={
+                        //countryId:$("#countryId").val(),
+    countryName:$("#countryName").val(),
+        isInternational:$("#isInternational").prop("checked"),
+    isActive:$("#isActive").prop("checked")
+
+    };
+
+        if(countryId==""){
+
+    apiService.post("http://localhost:7258/api/Country",country)
+    .then(()=>{
+
+    $("#countryModal").modal("hide");
+    loadCountries();
+
+    });
+
+    }
+    else{
+
+    apiService.put(`http://localhost:7258/api/Country/${countryId}`,country)
+    .then(()=>{
+
+    $("#countryModal").modal("hide");
+    loadCountries();
+
+    });
+
+    }
+
+    }
+
+    //Delete
+        function deleteCountry(countryId){
+
+Swal.fire({
+
+title:"Are you sure?",
+text:"This record will be deleted!",
+icon:"warning",
+showCancelButton:true,
+confirmButtonText:"Yes delete"
+
+}).then((result)=>{
+
+if(result.isConfirmed){
+
+    apiService.delete(`http://localhost:7258/api/Country/${countryId}`)
+.then(()=>{
+
+Swal.fire("Deleted!","Record deleted.","success");
+
+loadCountries();
+
+});
+
+}
+
+});
+
+}
+
+    const apiService = {
+
+    get: function(url){
+    return $.get(url);
+    },
+
+    post: function(url,data){
+    return $.ajax({
+    url:url,
+    method:"POST",
+    contentType:"application/json",
+    data:JSON.stringify(data)
+    });
+    },
+
+    put: function(url,data){
+    return $.ajax({
+    url:url,
+    method:"PUT",
+    contentType:"application/json",
+    data:JSON.stringify(data)
+    });
+    },
+
+    delete: function(url){
+    return $.ajax({
+    url:url,
+    method:"DELETE"
+    });
+    }
+
+    };
+</script>

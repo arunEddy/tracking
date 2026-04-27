@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"] = "Country Master";
+}
+
+<h2>Country Master Page</h2>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+
+   @*  <div class="card-header">
+
+        Country Master
+
+    </div>
+ *@
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <label>Country Name</label>
+
+                <input type="text" class="form-control">
+
+            </div>
+
+            <div class="col-md-3 mt-4">
+
+                <input type="checkbox"> International
+
+            </div>
+
+            <div class="col-md-3 mt-4">
+
+                <button class="btn btn-success w-100">Save</button>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <button onclick="loadCountries()">Load Countries</button>
+
+                <table class="table" id="tblCountry">
+                </table>
+
+                   </div>
+            
+
+    </div>
+
+</div>
+</div>
+    <script>
+
+        function loadCountries(){
+
+        // fetch('http://localhost:7258/api/Country')
+                fetch('https://api.magnumexpress.in/api/Country')
+
+        .then(res => res.json())
+
+        .then(data => {
+
+        let html = "";
+
+        data.forEach(c => {
+
+        html += `<tr>
+        <td>${c.countryId}</td>
+        <td>${c.countryName}</td>
+        <td>${c.countryType}</td>
+        <td>${c.IsActive}</td>
+        </tr>`;
+
+        });
+
+        document.getElementById("tblCountry").innerHTML = html;
+
+        });
+
+        }
+
+    </script>

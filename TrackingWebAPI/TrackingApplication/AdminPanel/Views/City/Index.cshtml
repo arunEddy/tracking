@@ -1,0 +1,645 @@
+﻿@{
+    ViewData["Title"] = "City Master";
+}
+
+<h2>State Master Page</h2>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<input type="hidden" id="cityId">
+
+<div class="modal fade" id="cityModal">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-danger text-white">
+
+                <h5 class="modal-title">City MASTER</h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+                        <label class="form-label">Country Type</label>
+                        <select class="form-select" id="countryType">
+                            <option>Domestic</option>
+                            <option>International</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Country Name</label>
+                        <select class="form-select" id="countryName">
+                            <option>Select Country</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">State Type</label>
+                        <select class="form-select" id="stateType">
+                            <option>STATE</option>
+                            <option>UT</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">State Code *</label>
+                        <input type="text" id="stateCode" class="form-control">
+                    </div>
+
+                    <div class="col-md-5">
+                        <label class="form-label">State Name *</label>
+                        <input type="text" id="stateName" class="form-control">
+                    </div>
+
+                    @*  <div class="col-md-4">
+                        <label class="form-label">GSTIN</label>
+                        <input type="text" id="gstin" class="form-control">
+                    </div> *@
+                    <div class="col-md-4">
+                        <input type="checkbox" id="isActive"> Active
+                    </div>
+                    @*  <div class="col-md-4">
+                        <label class="form-label">eWaybill GST Number</label>
+                        <input type="text" id="ewaybillGST" class="form-control">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">eWaybill Intra State Limit</label>
+                        <input type="text" id="ewaybillLimit" class="form-control">
+                    </div>
+ *@
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-success" onclick="saveState()">
+                    Save
+                </button>
+
+                <button class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cancel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<button class="btn btn-success mb-3" onclick="openAddModal()">Add State</button>
+<div class="table-responsive">
+
+    <table class="table table-bordered table-hover" id="stateTable">
+
+        <thead class="table-dark">
+
+            <tr>
+                <th>#</th>
+                <th>Country Type</th>
+                <th>Country</th>
+                <th>State Type</th>
+                <th>State Code</th>
+                <th>State Name</th>
+                @* <th>GSTIN</th> *@
+                <th>IsActive</th>
+                @*  <th>Ewaybill GST</th>
+                <th>Intra State Limit</th> *@
+                <th width="120">Action</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+        </tbody>
+
+    </table>
+
+</div>
+
+<div id="pagination"></div>
+
+<div class="modal fade" id="stateModal">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-danger text-white">
+
+                <h5 class="modal-title">STATE MASTER</h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+                        <label class="form-label">Country Type</label>
+                        <select class="form-select" id="countryType">
+                            <option value="0">Domestic</option>
+                            <option value="1">International</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Zone Name</label>
+                        <select class="form-select" id="ZoneName">
+                            <option>Select Zone</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">State Name</label>
+                        <select class="form-select" id="StateName">
+                            <option>Select State</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">City Code *</label>
+                        <input type="text" id="cityCode" class="form-control">
+                    </div>
+
+                    <div class="col-md-5">
+                        <label class="form-label">City Name *</label>
+                        <input type="text" id="cityName" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="checkbox" id="isMetroCity"> MetroCity
+                    </div>
+                   
+                    <div class="col-md-4">
+                        <input type="checkbox" id="isActive"> Active
+                    </div>
+
+                   
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-success" onclick="saveCity()">
+                    Save
+                </button>
+
+                <button class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cancel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+     let currentPage = 1;
+
+
+            $("#countryType").change(function(){
+
+     let type = $(this).val() === "International";
+
+     $.get(`http://localhost:7258/api/Zone/GetByType?type=${type}`, function(data){
+
+     let options = '<option value="">Select Zone</option>';
+
+     data.forEach(function(c){
+
+     options += `<option value="${c.zoneId}">
+     ${c.zoneName}
+     </option>`;
+
+     });
+
+     $("#zoneName").html(options);
+
+     });
+
+     });
+     function loadCity(page=1){
+
+     currentPage = page;
+     alert(page)
+
+     let search = $("#search").val();
+
+         $.get(`http://localhost:7258/api/State?search=${search}&page=${page}`, function(res){
+
+     let html="";
+
+     res.data.forEach(c=>{
+
+     html += `
+     <tr>
+
+         <td>${c.cityId}</td>
+         <td>${c.cityCode}</td>
+
+         <td>${c.cityName}</td>
+         
+          <td>${c.isInternational}</td>
+         <td>${c.zoneName}</td>
+         <td>${c.stateName}</td>
+         <td>${c.isMetroCity}</td>
+
+          <td>${c.isActive}</td>
+
+         <td>
+
+             <button class="btn btn-sm btn-primary"
+                     onclick="editCity(${c.cityId},'${c.stateName}',${c.isActive})">
+
+                 ✏️
+             </button>
+
+             <button class="btn btn-sm btn-danger"
+                     onclick="deleteCity(${c.cityId})">
+
+                 🗑
+             </button>
+
+         </td>
+
+     </tr>`;
+
+     });
+
+     $("#tblCity").html(html);
+
+     createPagination(res.total,page);
+
+     });
+
+     }
+             function saveState() {
+
+         var cityId = $("#cityId").val();
+
+         var city = {
+
+             cityId: cityId,
+             countryId: $("#countryName").val(),
+             stateType: $("#stateType").val(),
+             stateCode: $("#stateCode").val(),
+             stateName: $("#stateName").val(),
+             // gstin: $("#gstin").val(),
+             isActive: $("#isActive").prop("checked")
+
+         };
+
+         if (cityId == "" || cityId == 0) {
+
+             // INSERT
+             $.ajax({
+
+                 url: "http://localhost:7258/api/State",
+                 type: "POST",
+                 contentType: "application/json",
+                 data: JSON.stringify(city),
+
+                 success: function () {
+
+                     alert("State saved successfully");
+
+                     $("#stateModal").modal("hide");
+
+                     loadStates();
+
+                 },
+
+                 error: function () {
+
+                     alert("Error saving city");
+
+                 }
+
+             });
+
+         }
+         else {
+
+             // UPDATE
+             $.ajax({
+
+                 url: "http://localhost:7258/api/State/" + cityId,
+                 type: "PUT",
+                 contentType: "application/json",
+                 data: JSON.stringify(city),
+
+                 success: function () {
+
+                     alert("State updated successfully");
+
+                     $("#stateModal").modal("hide");
+
+                     loadStates();
+
+                 },
+
+                 error: function () {
+
+                     alert("Error updating city");
+
+                 }
+
+             });
+
+         }
+     }
+         @*Edit function*@
+                 function editState(cityId,name,isActive){
+
+             $("#cityId").val(cityId);
+         $("#stateName").val(name);
+         $("#isActive").prop("checked",isActive);
+
+         }
+
+             @*Delete function*@
+                 function deleteState(cityId){
+
+         if(confirm("Delete this record?")){
+
+         $.ajax({
+
+                 url:`http://localhost:7258/api/State/${cityId}`,
+         method:"DELETE",
+         success:function(){
+
+         loadStates(currentPage);
+
+         }
+
+         });
+
+         }
+
+         }
+
+             function createPagination(total,page){
+
+         let pageSize=5;
+
+         let pages = Math.ceil(total/pageSize);
+
+         let html="";
+
+         for(let i=1;i<=pages;i++){
+
+         html += `<button onclick="loadStates(${i})">${i}</button>`;
+
+         }
+
+         $("#pagination").html(html);
+
+         }
+
+             let table;
+
+         $(document).ready(function(){
+
+         loadStates();
+
+         });
+
+             function loadStates(){
+
+     $.get("http://localhost:7258/api/State",function(data){
+
+     let rows="";
+
+     data.forEach(function(s){
+
+     rows+=`<tr>
+
+     <td>${s.cityId}</td>
+     // <td>${s.isInternational==true?"International":"Domestic"}</td>
+     // <td>${s.countryName}</td>
+
+     <td>${s.stateType}</td>
+     <td>${s.stateCode}</td>
+     <td>${s.stateName}</td>
+
+     <td>${s.isActive}</td>
+
+
+     <td>
+
+
+      <button onclick="editState(${s.cityId})" class="btn btn-sm btn-primary">✏️</button>
+
+      <button onclick="deleteState(${s.cityId})" class="btn btn-sm btn-danger">🗑</button>
+
+     </td>
+
+     </tr>`;
+
+     });
+
+     $("#stateTable tbody").html(rows);
+
+     });
+
+     }
+
+
+             function openAddModal() {
+
+         // Clear hidden ID
+         $("#cityId").val("");
+
+         // Reset form fields
+         $("#countryType").val("Domestic");
+         $("#countryName").val("");
+         $("#stateType").val("STATE");
+         $("#stateCode").val("");
+         $("#stateName").val("");
+         // $("#gstin").val("");
+          $("#isActive").val("");
+         // $("#ewaybillGST").val("");
+         // $("#ewaybillLimit").val("");
+
+         // Change modal title
+         $("#modalTitle").text("Add State");
+
+         // Open modal
+         $("#stateModal").modal("show");
+     }
+
+                     function editState(id){
+
+     $.get(`http://localhost:7258/api/State/${id}`,function(data){
+        debugger;
+        //alert(data);
+       // alert(data[0].cityId)
+     $("#cityId").val(data[0].cityId);
+    // $("#countryType").val(data.isInternational);
+     $("#countryName").val(data[0].countryId).trigger("change");
+     $("#stateType").val(data[0].stateType);
+     $("#stateCode").val(data[0].stateCode);
+     $("#stateName").val(data[0].stateName);
+     // $("#gstin").val(data.gstin);
+    $("#isActive").prop("checked", data[0].isActive);
+     // $("#ewaybillGST").val(data.ewayBillGST);
+     // $("#ewaybillLimit").val(data.ewayBillLimit);
+
+     $("#stateModal").modal("show");
+
+     });
+
+     }
+         //Save
+                 function saveState(){
+
+     let id = $("#cityId").val();
+
+     let city={
+
+     countryType:$("#countryType").val(),
+     countryId:$("#countryName").val(),
+      countryName:$("#countryName").val(),
+     stateType:$("#stateType").val(),
+     stateCode:$("#stateCode").val(),
+     stateName:$("#stateName").val(),
+     // gstin:$("#gstin").val(),
+     isActive: $("#isActive").prop("checked")
+         // ewayBillGST:$("#ewaybillGST").val(),
+     // ewayBillLimit:$("#ewaybillLimit").val()
+
+     };
+
+     if(id==""){
+
+     $.ajax({
+
+     url:"http://localhost:7258/api/State",
+     method:"POST",
+     contentType:"application/json",
+     data:JSON.stringify(city),
+
+     success:function(){
+
+     alert("State Saved");
+     loadStates();
+
+     },
+       error: function (xhr) {
+             console.log(xhr.responseText);   // IMPORTANT
+             alert("Save failed");
+         }
+
+     });
+
+     }
+     else{
+
+     $.ajax({
+
+     url:`http://localhost:7258/api/State/${id}`,
+     method:"PUT",
+     contentType:"application/json",
+     data:JSON.stringify(city),
+
+     success:function(){
+
+     alert("State Updated");
+     loadStates();
+
+     }
+
+     });
+
+     }
+
+     }
+
+         //Delete
+             function deleteState(cityId){
+
+     Swal.fire({
+
+     title:"Are you sure?",
+     text:"This record will be deleted!",
+     icon:"warning",
+     showCancelButton:true,
+     confirmButtonText:"Yes delete"
+
+     }).then((result)=>{
+
+     if(result.isConfirmed){
+
+         apiService.delete(`http://localhost:7258/api/State/${cityId}`)
+     .then(()=>{
+
+     Swal.fire("Deleted!","Record deleted.","success");
+
+     loadStates();
+
+     });
+
+     }
+
+     });
+
+     }
+
+         const apiService = {
+
+         get: function(url){
+         return $.get(url);
+         },
+
+         post: function(url,data){
+         return $.ajax({
+         url:url,
+         method:"POST",
+         contentType:"application/json",
+         data:JSON.stringify(data)
+         });
+         },
+
+         put: function(url,data){
+         return $.ajax({
+         url:url,
+         method:"PUT",
+         contentType:"application/json",
+         data:JSON.stringify(data)
+         });
+         },
+
+         delete: function(url){
+         return $.ajax({
+         url:url,
+         method:"DELETE"
+         });
+         }
+
+         };
+</script>

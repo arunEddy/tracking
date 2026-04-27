@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>bin\Release\net8.0\publish\MagnumExpressAdmin</_PublishTargetUrl>
+    <History>True|2026-03-09T06:57:46.5890602Z||;True|2026-03-09T12:20:55.7757193+05:30||;True|2026-03-09T11:52:05.3202750+05:30||;True|2026-03-09T10:23:37.2783188+05:30||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Controllers/CountryController.cs">
+      <publishTime>08/03/2026 05:02:27</publishTime>
+    </File>
+    <File Include="Controllers/DashboardController.cs">
+      <publishTime>08/03/2026 04:55:06</publishTime>
+    </File>
+    <File Include="Interface/IApiService.cs">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Program.cs">
+      <publishTime>03/09/2026 03:43:14</publishTime>
+    </File>
+    <File Include="Properties/launchSettings.json">
+      <publishTime>03/09/2026 03:53:54</publishTime>
+    </File>
+    <File Include="Views/Country/Index.cshtml">
+      <publishTime>03/09/2026 12:26:37</publishTime>
+    </File>
+    <File Include="Views/Dashboard/Index.cshtml">
+      <publishTime>03/08/2026 05:08:42</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>03/08/2026 05:20:13</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml.css">
+      <publishTime>01/01/2026 14:32:17</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

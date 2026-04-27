@@ -1,0 +1,14 @@
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\bin\Release\net8.0\DALCLASS.deps.json
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\bin\Release\net8.0\DALCLASS.runtimeconfig.json
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\bin\Release\net8.0\DALCLASS.dll
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\bin\Release\net8.0\DALCLASS.pdb
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Release\net8.0\DALCLASS.csproj.AssemblyReference.cache
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Release\net8.0\DALCLASS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Release\net8.0\DALCLASS.AssemblyInfoInputs.cache
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Release\net8.0\DALCLASS.AssemblyInfo.cs
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Release\net8.0\DALCLASS.csproj.CoreCompileInputs.cache
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Release\net8.0\DALCLASS.dll
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Release\net8.0\refint\DALCLASS.dll
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Release\net8.0\DALCLASS.pdb
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Release\net8.0\DALCLASS.genruntimeconfig.cache
+C:\Users\HP\Downloads\TrackingApplication\TrackingApplication\DALCLASS\obj\Release\net8.0\ref\DALCLASS.dll
