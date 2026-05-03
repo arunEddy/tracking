@@ -52,8 +52,8 @@ namespace TrackingWebAPI.Services
                 existingdRS.SimNo = dRS.SimNo;
                 existingdRS.AwbNo = dRS.AwbNo;
                 existingdRS.ConsigneeName = dRS.ConsigneeName;
-                existingdRS.mdfby = dRS.mdfby;
-                existingdRS.mdfon = dRS.mdfon;
+                existingdRS.mfdby = dRS.mfdby;
+                existingdRS.mfdon = dRS.mfdon;
                 existingdRS.IsActive = dRS.IsActive;
                 await _context.SaveChangesAsync();
             }

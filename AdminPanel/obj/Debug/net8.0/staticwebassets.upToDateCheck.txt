@@ -3,16 +3,15 @@ wwwroot\favicon.ico
 wwwroot\js\AirlineMaster.js
 wwwroot\js\AWBPrint.js
 wwwroot\js\AWBStockRequest.js
-wwwroot\js\BookingScanLogisticEdit.js
 wwwroot\js\BookingScanNormal.js
 wwwroot\js\BookingScanNormalEdit.js
 wwwroot\js\CancelAWB.js
+wwwroot\js\CashBooking.js
 wwwroot\js\config.js
 wwwroot\js\CustomerWiseReBookDeliveryAddress.js
 wwwroot\js\DeliveryBoyMaster.js
 wwwroot\js\EDPEditing.js
 wwwroot\js\EDPEntry.js
-wwwroot\js\INSCANLOGISTIC.js
 wwwroot\js\OfficeRequest.js
 wwwroot\js\OperationDataImport.js
 wwwroot\js\ReBookingScan.js
@@ -91,4 +90,5 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\js\CashBooking.js
+wwwroot\js\BookingScanLogisticEdit.js
+wwwroot\js\INSCANLOGISTIC.js

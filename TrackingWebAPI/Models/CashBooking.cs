@@ -10,6 +10,8 @@ namespace TrackingWebAPI.Models
         public string? BookingOffice { get; set; }
         public string? ShipperName { get; set; }
         public string? DocketType { get; set; }
+        public string? invoiceNumber { get; set; }
+        public string? emailId { get; set; }
         public string? AWB { get; set; }
         public DateTime? BookingDate { get; set; }
         public string? Origin { get; set; }
@@ -19,6 +21,7 @@ namespace TrackingWebAPI.Models
         public string? Pcs { get; set; }
         public decimal? Volumetric { get; set; }
         public decimal? ChargeWeight { get; set; }
+        public decimal? ActualWt { get; set; }
         public decimal? VolWeight { get; set; }
         public decimal? CODAmount { get; set; }
         public string? ConsignorMobile { get; set; }
@@ -44,10 +47,12 @@ namespace TrackingWebAPI.Models
         public decimal? SGST { get; set; }
         public decimal? IGST { get; set; }
         public decimal? TotalAmount { get; set; }
+        public string? remarks { get; set; }
+        public string? referenceNo { get; set; }
         public string? createdby { get; set; }
         public DateTime? createdon { get; set; } = DateTime.UtcNow;
-        public string? mdfby { get; set; }
-        public DateTime? mdfon { get; set; }
+        public string? mfdby { get; set; }
+        public DateTime? mfdon { get; set; }
         public string? IsActive { get; set; }
         [Column("end_dt")]
         public string? EndDate { get; set; }

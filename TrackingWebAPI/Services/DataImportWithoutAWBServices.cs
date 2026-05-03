@@ -45,8 +45,8 @@ namespace TrackingWebAPI.Services
                 existingdataImportWithoutAWB.BookingDate = dataImportWithoutAWB.BookingDate;
                 existingdataImportWithoutAWB.ConsigneeName = dataImportWithoutAWB.ConsigneeName;
                 existingdataImportWithoutAWB.Shipperfile = dataImportWithoutAWB.Shipperfile;
-                existingdataImportWithoutAWB.mdfby = dataImportWithoutAWB.mdfby;
-                existingdataImportWithoutAWB.mdfon = dataImportWithoutAWB.mdfon;
+                existingdataImportWithoutAWB.mfdby = dataImportWithoutAWB.mfdby;
+                existingdataImportWithoutAWB.mfdon = dataImportWithoutAWB.mfdon;
                 existingdataImportWithoutAWB.IsActive = dataImportWithoutAWB.IsActive;
                 await _context.SaveChangesAsync();
             }

@@ -35,12 +35,12 @@ namespace TrackingWebAPI.Models
         public string? Mobile { get; set; }
         public string? ConsigneePincode { get; set; }
         public string? City { get; set; }
-        public string? MasterReferenceNo { get; set; }
+        public int? MasterReferenceNo { get; set; }
         public string? Remarks { get; set; }
         public string? createdby { get; set; }
         public DateTime? createdon { get; set; } = DateTime.UtcNow;
-        public string? mdfby { get; set; }
-        public DateTime? mdfon { get; set; }
+        public string? mfdby { get; set; }
+        public DateTime? mfdon { get; set; }
         public string? IsActive { get; set; }
         [Column("end_dt")]
         public string? EndDate { get; set; }

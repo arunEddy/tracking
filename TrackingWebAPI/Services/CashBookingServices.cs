@@ -43,6 +43,8 @@ namespace TrackingWebAPI.Services
                 existingCashBooking.BookingOffice = CashBooking.BookingOffice;
                 existingCashBooking.ShipperName = CashBooking.ShipperName;
                 existingCashBooking.DocketType = CashBooking.DocketType;
+                existingCashBooking.invoiceNumber = CashBooking.invoiceNumber;
+                existingCashBooking.emailId = CashBooking.emailId;
                 existingCashBooking.AWB = CashBooking.AWB;
                 existingCashBooking.BookingDate = CashBooking.BookingDate;
                 existingCashBooking.Origin = CashBooking.Origin;
@@ -52,6 +54,7 @@ namespace TrackingWebAPI.Services
                 existingCashBooking.Pcs = CashBooking.Pcs;
                 existingCashBooking.Volumetric = CashBooking.Volumetric;
                 existingCashBooking.ChargeWeight = CashBooking.ChargeWeight;
+                existingCashBooking.ActualWt = CashBooking.ActualWt;
                 existingCashBooking.VolWeight = CashBooking.VolWeight;
                 existingCashBooking.CODAmount = CashBooking.CODAmount;
                 existingCashBooking.ConsignorMobile = CashBooking.ConsignorMobile;
@@ -70,8 +73,10 @@ namespace TrackingWebAPI.Services
                 existingCashBooking.SGST = CashBooking.SGST;
                 existingCashBooking.IGST = CashBooking.IGST;
                 existingCashBooking.TotalAmount = CashBooking.TotalAmount;
-                existingCashBooking.mdfby = CashBooking.mdfby;
-                existingCashBooking.mdfon = CashBooking.mdfon;
+                existingCashBooking.referenceNo = CashBooking.referenceNo;
+                existingCashBooking.remarks = CashBooking.remarks;
+                existingCashBooking.mfdby = CashBooking.mfdby;
+                existingCashBooking.mfdon = CashBooking.mfdon;
                 existingCashBooking.IsActive = CashBooking.IsActive;
                 await _context.SaveChangesAsync();
             }

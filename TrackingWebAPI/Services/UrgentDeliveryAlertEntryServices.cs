@@ -51,8 +51,8 @@ namespace TrackingWebAPI.Services
                 existingurgentDeliveryAlertEntry.Deltime = urgentDeliveryAlertEntry.Deltime;
                 existingurgentDeliveryAlertEntry.DeliveryRemarks = urgentDeliveryAlertEntry.DeliveryRemarks;
                 existingurgentDeliveryAlertEntry.Status = urgentDeliveryAlertEntry.Status;
-                existingurgentDeliveryAlertEntry.mdfby = urgentDeliveryAlertEntry.mdfby;
-                existingurgentDeliveryAlertEntry.mdfon = urgentDeliveryAlertEntry.mdfon;
+                existingurgentDeliveryAlertEntry.mfdby = urgentDeliveryAlertEntry.mfdby;
+                existingurgentDeliveryAlertEntry.mfdon = urgentDeliveryAlertEntry.mfdon;
                 existingurgentDeliveryAlertEntry.IsActive = urgentDeliveryAlertEntry.IsActive;
                 await _context.SaveChangesAsync();
             }

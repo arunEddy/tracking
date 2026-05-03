@@ -16,8 +16,8 @@ namespace TrackingWebAPI.Models
         public int? cbId { get; set; }
         public string? createdby { get; set; }
         public DateTime? createdon { get; set; } = DateTime.UtcNow;
-        public string? mdfby { get; set; }
-        public DateTime? mdfon { get; set; }
+        public string? mfdby { get; set; }
+        public DateTime? mfdon { get; set; }
         public string? IsActive { get; set; }
         [Column("end_dt")]
         public string? EndDate { get; set; }

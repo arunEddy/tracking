@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Events;
 using TrackingWebAPI.Interfaces;
+using TrackingWebAPI.Models;
 using TrackingWebAPI.Services;
 using CountryServices = TrackingWebAPI.Services.CountryServices;
 var builder = WebApplication.CreateBuilder(args);
@@ -51,6 +52,18 @@ builder.Services.AddScoped<TrackingWebAPI.Interfaces.ICancelAWB, CancelAWBServic
 
 builder.Services.AddScoped<TrackingWebAPI.Interfaces.ICashBooking, CashBookingServices>();
 builder.Services.AddScoped<TrackingWebAPI.Interfaces.ICashBookingItemDetails, CashBookingItemDetailsServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.IBookingScanNormal, BookingScanNormalServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.IBookingSelf, BookingSelfServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.IBookingSelfItemDetails, BookingSelfItemDetailsServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.IReturnBooking, ReturnBookingServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.IEDPEditing, EDPEditingServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.IBookingMPPS, BookingMPPSServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.IDataImportWithoutAWB, DataImportWithoutAWBServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.ICustomerDataUpdateAWB, CustomerDataUpdateAWBServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.IUrgentDeliveryAlertEntry, UrgentDeliveryAlertEntryServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.IAWBPrint, AWBPrintServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.IDRS, DRSServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.IStockIssueToEmployee, StockIssueToEmployeeServices>();
 //Code added by Arun on 21-03-2026 for Master Menu DI   
 builder.Services.AddScoped<ICompanyMaster, CompanyServices>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

@@ -3,6 +3,150 @@
     ViewData["Title"] = "BookingScanNormal";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-<h1>BookingScanNormal</h1>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- ===================== BUTTON ===================== -->
+<button class="btn btn-primary btn-sm" onclick="openModal()">
+    <i class="bi bi-plus"></i> Add Booking
+</button>
 
+<!-- ===================== TABLE ===================== -->
+<table class="table table-bordered table-hover mt-2">
+    <thead class="table-light">
+        <tr>
+            <th>#</th>
+            <th>AWB</th>
+            <th>Customer</th>
+            <th>City</th>
+            <th>Pincode</th>
+            <th class="text-end">Action</th>
+        </tr>
+    </thead>
+    <tbody id="tblData"></tbody>
+</table>
+
+<!-- ===================== MODAL ===================== -->
+<div class="modal fade" id="mainModal">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-header bg-info text-white">
+                <div class="w-100 d-flex justify-content-between">
+                    <b>BOOKING SCAN - NORMAL</b>
+                    <div class="d-flex gap-2">
+                        <input id="ManifestNoPrint" class="form-control form-control-sm" placeholder="Manifest No">
+                        <button class="btn btn-dark btn-sm" onclick="printManifest()">Print</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-body p-2">
+
+                <!-- HEADER -->
+                <div class="border p-2 mb-2">
+                    <div class="row g-2">
+
+                        <div class="col-md-3">
+                            <label>Booking Office <span class="text-danger">*</span></label>
+                            <input id="BookingOffice" class="form-control form-control-sm">
+                        </div>
+
+                        <div class="col-md-2">
+                            <label>Booking Date <span class="text-danger">*</span></label>
+                            <input type="date" id="BookingDate" class="form-control form-control-sm">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label>Pickup City <span class="text-danger">*</span></label>
+                            <input id="PickupCity" class="form-control form-control-sm">
+                        </div>
+
+                        <div class="col-md-2">
+                            <label>Pickup Pincode <span class="text-danger">*</span></label>
+                            <input id="PickupPincode" class="form-control form-control-sm only-number">
+                        </div>
+
+                        <div class="col-md-2">
+                            <label>Manifest No <span class="text-danger">*</span></label>
+                            <input id="ManifestNo" class="form-control form-control-sm only-number">
+                        </div>
+
+                        <div class="col-md-2">
+                            <label>Manifest Date</label>
+                            <input type="date" id="ManifestDate" class="form-control form-control-sm">
+                        </div>
+
+                        <div class="col-md-2">
+                            <label>Credit Limit</label>
+                            <input id="CreditLimit" class="form-control form-control-sm">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- BODY -->
+                <div class="row">
+
+                    <div class="col-md-8 border p-2">
+                        <h6 class="text-primary">AWB Details</h6>
+
+                        <div class="row g-2">
+
+                            <div class="col-md-2"><label>AWB *</label><input id="AWB" class="form-control form-control-sm"></div>
+                            <div class="col-md-3"><label>Customer Name</label><input id="CustomerName" class="form-control form-control-sm"></div>
+                            <div class="col-md-2"><label>Mode *</label><input id="Mode" class="form-control form-control-sm"></div>
+                            <div class="col-md-1"><label>Pcs</label><input id="Pcs" class="form-control form-control-sm only-number"></div>
+
+                            <div class="col-md-2"><label>Actual Wt</label><input id="ActualWeight" class="form-control form-control-sm only-number"></div>
+                            <div class="col-md-2"><label>Volumetric</label><input id="Volumetric" class="form-control form-control-sm"></div>
+                            <div class="col-md-2"><label>Vol Wt</label><input id="VolWt" class="form-control form-control-sm only-number"></div>
+                            <div class="col-md-2"><label>Charge Wt *</label><input id="ChargeWt" class="form-control form-control-sm only-number"></div>
+
+                            <div class="col-md-3"><label>Product *</label><input id="ProductName" class="form-control form-control-sm"></div>
+                            <div class="col-md-2"><label>COD Amount</label><input id="CODAmount" class="form-control form-control-sm only-number"></div>
+                            <div class="col-md-2"><label>Book Type *</label><input id="BookType" class="form-control form-control-sm"></div>
+
+                            <div class="col-md-3"><label>Content</label><input id="Content" class="form-control form-control-sm"></div>
+                            <div class="col-md-3"><label>Ref No</label><input id="RefNo" class="form-control form-control-sm"></div>
+                            <div class="col-md-3"><label>Product Service</label><input id="ProductService" class="form-control form-control-sm"></div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 border p-2">
+                        <h6 class="text-primary">Consignee Details</h6>
+
+                        <label>Name *</label><input id="bsnName" class="form-control form-control-sm mb-1">
+                        <label>Address</label><input id="bsnAddress" class="form-control form-control-sm mb-1">
+                        <label>City *</label><input id="City" class="form-control form-control-sm mb-1">
+                        <label>Pincode *</label><input id="Pincode" class="form-control form-control-sm only-number mb-1">
+
+                        <div class="form-check">
+                            <input type="checkbox" id="ODAChargeApplicable">
+                            <label>ODA Charge Applicable</label>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-success btn-sm" onclick="saveData()">Save</button>
+                <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="~/js/BookingScanNormal.js" asp-append-version="true"></script>

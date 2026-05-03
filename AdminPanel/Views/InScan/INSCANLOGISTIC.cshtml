@@ -4,5 +4,277 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>INSCANLOGISTIC</h1>
+<!-- 1. jQuery FIRST -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+<!-- 2. Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- 3. SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+<style>
+    .form-control-sm {
+        height: 28px;
+        font-size: 12px;
+    }
+
+    label {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .section-box {
+        border: 1px solid #ccc;
+        padding: 8px;
+        margin-top: 6px;
+    }
+
+    .border {
+        border-radius: 8px;
+        background: #fafafa;
+    }
+</style>
+
+<!-- ================= PAGE ================= -->
+<div class="container-fluid mt-2">
+
+    <div class="d-flex justify-content-between">
+        <h6 class="fw-bold">Booking - Self</h6>
+        <button class="btn btn-primary btn-sm" id="btnAdd">
+            <i class="bi bi-plus"></i> Add Booking Self
+        </button>
+    </div>
+
+    <table class="table table-bordered table-sm table-hover mt-2">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>AWB</th>
+                <th>Customer</th>
+                <th>City</th>
+                <th class="text-end">Action</th>
+            </tr>
+        </thead>
+        <tbody id="tblData"></tbody>
+    </table>
+
+</div>
+
+<div class="modal fade" id="bookingModal">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-header bg-danger text-white">
+                <h6>Booking - Self</h6>
+                <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <input type="hidden" id="bseid">
+
+                <!-- HEADER -->
+                <div class="row g-2">
+                    <div class="col-md-3">
+                        <label>Booking Office</label>
+                        <input id="BookingOffice" class="form-control form-control-sm" value="HO - HEAD OFFICE">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label>Customer Name <span style="color:red">*</span></label>
+                        <input id="CustomerName" class="form-control form-control-sm">
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Docket Type <span style="color:red">*</span></label>
+                        <select id="DocketType" class="form-select form-select-sm">
+                            <option value="">--Select--</option>
+                            <option>MANUAL</option>
+                            <option>VIRTUAL</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+
+                    <!-- AWB DETAILS -->
+                    <div class="col-md-4">
+                        <div class="border p-2 h-100">
+                            <b>AWB Details</b>
+
+                            <div class="mb-1">
+                                <label>AWB *</label>
+                                <input id="AWB" class="form-control form-control-sm">
+                            </div>
+
+                            <div class="mb-1">
+                                <label>Book Date</label>
+                                <input type="date" id="BookDate" class="form-control form-control-sm">
+                            </div>
+
+                            <div class="mb-1">
+                                <label>Origin *</label>
+                                <input id="Origin" class="form-control form-control-sm">
+                            </div>
+
+                            <div class="mb-1">
+                                <label>Destination *</label>
+                                <input id="Destination" class="form-control form-control-sm">
+                            </div>
+
+                            <div class="mb-1">
+                                <label>Mode *</label>
+                                <input id="Mode" class="form-control form-control-sm">
+                            </div>
+
+                            <div class="row g-1">
+                                <div class="col">
+                                    <label>Pcs *</label>
+                                    <input id="Pcs" class="form-control form-control-sm">
+                                </div>
+                                <div class="col">
+                                    <label>Charge Wt *</label>
+                                    <input id="ChargeWt" class="form-control form-control-sm">
+                                </div>
+                            </div>
+
+                            <div class="mt-1">
+                                <label>Product Name *</label>
+                                <input id="ProductName" class="form-control form-control-sm">
+                            </div>
+
+                            <div class="mt-1">
+                                <label>Topay Amount</label>
+                                <input id="TopayAmount" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CONSIGNOR -->
+                    <div class="col-md-4">
+                        <div class="border p-2 h-100">
+                            <b>Consignor Details</b>
+
+                            <div class="mb-1">
+                                <label>Name</label>
+                                <input id="ConsignorName" class="form-control form-control-sm">
+                            </div>
+
+                            <div class="mb-1">
+                                <label>Pickup City *</label>
+                                <input id="PickupCity" class="form-control form-control-sm">
+                            </div>
+
+                            <div class="mb-1">
+                                <label>Pickup Pincode *</label>
+                                <input id="PickupPincode" class="form-control form-control-sm">
+                            </div>
+
+                            <input id="Address1" placeholder="Address1" class="form-control form-control-sm mb-1">
+                            <input id="Address2" placeholder="Address2" class="form-control form-control-sm">
+                        </div>
+                    </div>
+
+                    <!-- CONSIGNEE -->
+                    <div class="col-md-4">
+                        <div class="border p-2 h-100">
+                            <b>Consignee Details</b>
+
+                            <div class="mb-1">
+                                <label>Name</label>
+                                <input id="ConsigneeName" class="form-control form-control-sm">
+                            </div>
+
+                            <div class="mb-1">
+                                <label>Phone</label>
+                                <input id="ConsigneePhone" class="form-control form-control-sm">
+                            </div>
+
+                            <div class="mb-1">
+                                <label>Mobile</label>
+                                <input id="Mobile" class="form-control form-control-sm">
+                            </div>
+
+                            <div class="mb-1">
+                                <label>Pincode *</label>
+                                <input id="ConsigneePincode" class="form-control form-control-sm">
+                            </div>
+
+                            <input id="ConsigneeAddress1" placeholder="Address1" class="form-control form-control-sm mb-1">
+                            <input id="ConsigneeAddress2" placeholder="Address2" class="form-control form-control-sm">
+
+                            <div class="mt-1">
+                                <label>City *</label>
+                                <input id="City" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- REF -->
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <input id="MasterReferenceNo" placeholder="Master Reference No" class="form-control form-control-sm">
+                    </div>
+                    <div class="col-md-6">
+                        <input id="Remarks" placeholder="Remarks" class="form-control form-control-sm">
+                    </div>
+                </div>
+
+                <!-- ITEMS -->
+                <div class="border p-2 mt-2">
+                    <b>Item Details</b>
+
+                    <div class="row g-1">
+                        <div class="col"><input id="PartnerRefNo" placeholder="Partner Ref No" class="form-control form-control-sm"></div>
+                        <div class="col"><input id="eWayBillNumber" placeholder="EWay Bill" class="form-control form-control-sm"></div>
+                        <div class="col"><input type="date" id="EWBValidDate" class="form-control form-control-sm"></div>
+                        <div class="col"><input id="InvoiceID" placeholder="Invoice ID" class="form-control form-control-sm"></div>
+                        <div class="col"><input type="date" id="InvoiceDate" class="form-control form-control-sm"></div>
+                        <div class="col"><input id="Description" placeholder="Description" class="form-control form-control-sm"></div>
+                        <div class="col"><input id="InvoiceAmount" placeholder="Amount" class="form-control form-control-sm"></div>
+                        <div class="col"><input id="CODAmountItem" placeholder="COD" class="form-control form-control-sm"></div>
+                        <div class="col-auto">
+                            <button class="btn btn-primary btn-sm" id="btnAddItem">+</button>
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered table-sm mt-2">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Partner Ref</th>
+                                <th>EWay Bill</th>
+                                <th>EWB Date</th>
+                                <th>Invoice ID</th>
+                                <th>Invoice Date</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>COD</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itemTable"></tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-success btn-sm" id="btnSave">Save</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="~/js/INSCANLOGISTIC.js" asp-append-version="true"></script>

@@ -43,8 +43,8 @@ namespace TrackingWebAPI.Services
                 existingbookingMPPS.AWBNumber = bookingMPPS.AWBNumber;
                 existingbookingMPPS.bmpFormat = bookingMPPS.bmpFormat;
                 existingbookingMPPS.AWBNo = bookingMPPS.AWBNo;
-                existingbookingMPPS.mdfby = bookingMPPS.mdfby;
-                existingbookingMPPS.mdfon = bookingMPPS.mdfon;
+                existingbookingMPPS.mfdby = bookingMPPS.mfdby;
+                existingbookingMPPS.mfdon = bookingMPPS.mfdon;
                 existingbookingMPPS.IsActive = bookingMPPS.IsActive;
                 await _context.SaveChangesAsync();
             }

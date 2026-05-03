@@ -50,8 +50,8 @@ namespace TrackingWebAPI.Services
                 existingcustomerDataUpdateAWB.GoodsValue = customerDataUpdateAWB.GoodsValue;
                 existingcustomerDataUpdateAWB.Contents = customerDataUpdateAWB.Contents;
                 existingcustomerDataUpdateAWB.Remarks = customerDataUpdateAWB.Remarks;
-                existingcustomerDataUpdateAWB.mdfby = customerDataUpdateAWB.mdfby;
-                existingcustomerDataUpdateAWB.mdfon = customerDataUpdateAWB.mdfon;
+                existingcustomerDataUpdateAWB.mfdby = customerDataUpdateAWB.mfdby;
+                existingcustomerDataUpdateAWB.mfdon = customerDataUpdateAWB.mfdon;
                 existingcustomerDataUpdateAWB.IsActive = customerDataUpdateAWB.IsActive;
                 await _context.SaveChangesAsync();
             }

@@ -21,11 +21,11 @@ namespace TrackingWebAPI.Services
                             .ToListAsync();
         }
 
-        public async Task<Models.CashBookingItemDetails> GetCashBookingItemDetailsById(int id)
+        public async Task<IEnumerable<Models.CashBookingItemDetails>> GetCashBookingItemDetailsById(int id)
         {
             return await _context.cashBookingItemDetails
-           .Where(x => x.cbIId == id && x.EndDate == null || x.EndDate == "")
-           .FirstOrDefaultAsync();
+         .Where(x => x.cbId == id && (x.EndDate == null || x.EndDate == ""))
+         .ToListAsync();
         }
 
         public async Task<Models.CashBookingItemDetails> CreateCashBookingItemDetails(Models.CashBookingItemDetails customerDataUpdateAWB)
@@ -47,8 +47,8 @@ namespace TrackingWebAPI.Services
                 existingcustomerDataUpdateAWB.eWayBillNumber = customerDataUpdateAWB.eWayBillNumber;
                 existingcustomerDataUpdateAWB.EWBDate = customerDataUpdateAWB.EWBDate;
                 existingcustomerDataUpdateAWB.cbId = customerDataUpdateAWB.cbId;
-                existingcustomerDataUpdateAWB.mdfby = customerDataUpdateAWB.mdfby;
-                existingcustomerDataUpdateAWB.mdfon = customerDataUpdateAWB.mdfon;
+                existingcustomerDataUpdateAWB.mfdby = customerDataUpdateAWB.mfdby;
+                existingcustomerDataUpdateAWB.mfdon = customerDataUpdateAWB.mfdon;
                 existingcustomerDataUpdateAWB.IsActive = customerDataUpdateAWB.IsActive;
                 await _context.SaveChangesAsync();
             }

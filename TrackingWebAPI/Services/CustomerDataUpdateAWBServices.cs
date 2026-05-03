@@ -47,8 +47,8 @@ namespace TrackingWebAPI.Services
                 existingcustomerDataUpdateAWB.BookingDate = customerDataUpdateAWB.BookingDate;
                 existingcustomerDataUpdateAWB.ReferenceNo = customerDataUpdateAWB.ReferenceNo;
                 existingcustomerDataUpdateAWB.AWBNo = customerDataUpdateAWB.AWBNo;
-                existingcustomerDataUpdateAWB.mdfby = customerDataUpdateAWB.mdfby;
-                existingcustomerDataUpdateAWB.mdfon = customerDataUpdateAWB.mdfon;
+                existingcustomerDataUpdateAWB.mfdby = customerDataUpdateAWB.mfdby;
+                existingcustomerDataUpdateAWB.mfdon = customerDataUpdateAWB.mfdon;
                 existingcustomerDataUpdateAWB.IsActive = customerDataUpdateAWB.IsActive;
                 await _context.SaveChangesAsync();
             }

@@ -51,8 +51,8 @@ namespace TrackingWebAPI.Services
                 existingAwb.Deltime = Awb.Deltime;
                 existingAwb.DeliveryRemarks = Awb.DeliveryRemarks;
                 existingAwb.Status = Awb.Status;
-                existingAwb.mdfby = Awb.mdfby;
-                existingAwb.mdfon = Awb.mdfon;
+                existingAwb.mfdby = Awb.mfdby;
+                existingAwb.mfdon = Awb.mfdon;
                 existingAwb.IsActive = Awb.IsActive;
                 await _context.SaveChangesAsync();
             }

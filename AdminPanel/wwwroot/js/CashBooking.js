@@ -84,6 +84,22 @@ $(document).ready(function () {
             calculateGST(); // fallback
         }
     });
+
+    $(document).on("click", ".btn-item-edit", function () {
+
+        let i = $(this).data("index");
+        let x = items[i];
+
+        $("#invoiceId").val(x.invoiceId);
+        $("#invoiceDate").val(formatDateInput(x.invoiceDate));
+        $("#description").val(x.description);
+        $("#amount").val(x.amount);
+        $("#ewayBill").val(x.ewayBill);
+        $("#ewbDate").val(formatDateInput(x.ewbDate));
+
+        // ✅ store index for update
+        $("#invoiceId").data("edit-index", i);
+    });
 });
 
 
@@ -99,8 +115,8 @@ function loadData() {
             html += `<tr>
                 <td>${i + 1}</td>
                 <td>${x.awb || ''}</td>
-                <td>${x.consignorName || ''}</td>
-                <td>${x.consigneeName || ''}</td>
+                <td>${x.bookingOffice || ''}</td>
+                <td>${x.shipperName || ''}</td>
                 <td>${x.total || ''}</td>
                 <td class="text-end">
                     <button class="btn btn-warning btn-sm btn-edit" data-id="${x.cbid}">
@@ -161,14 +177,17 @@ function saveData() {
     if (!validate()) return;
 
     let id = parseInt($("#id").val()) || 0;
+    let isUpdate = id > 0;
 
     let obj = {
-
         cbid: id,
-
         bookingOffice: $("#bookingOffice").val(),
         shipperName: $("#shipperName").val(),
         docketType: $("#docketType").val(),
+        invoiceNumber: $("#invoiceNumber").val(),
+        emailId: $("#emailId").val(),
+        referenceNo: $("#referenceNo").val(),
+        remarks: $("#remarks").val(),
 
         awb: $("#awb").val(),
         bookingDate: $("#bookingDate").val(),
@@ -178,13 +197,12 @@ function saveData() {
         product: $("#product").val(),
 
         pcs: $("#pcs").val(),
-        actualWeight: $("#actualWeight").val(),
-        volumetric: $("#volumetric").val(),
-        volWeight: $("#volWeight").val(),
-        chargeWeight: $("#chargeWeight").val(),
+        actualWt: parseFloat($("#actualWeight").val()) || 0,
+        volumetric: $("#volumetric").val() === "Y" ? 1 : 0,
+        volWeight: parseFloat($("#volWeight").val()) || 0,
+        chargeWeight: parseFloat($("#chargeWeight").val()) || 0,
 
         consignorMobile: $("#cMobile").val(),
-        consignorGST: $("#cGst").val(),
         consignorName: $("#cName").val(),
         consignorAddress1: $("#cAddress1").val(),
         consignorAddress2: $("#cAddress2").val(),
@@ -193,7 +211,7 @@ function saveData() {
         consignorState: $("#cState").val(),
 
         consigneeMobile: $("#cnMobile").val(),
-        consigneeGST: $("#cnGst").val(),
+        consigneeGSTNo: $("#cnGst").val(),
         consigneeName: $("#cnName").val(),
         consigneeAddress1: $("#cnAddress1").val(),
         consigneeAddress2: $("#cnAddress2").val(),
@@ -201,25 +219,23 @@ function saveData() {
         consigneePincode: $("#cnPincode").val(),
         consigneeState: $("#cnState").val(),
 
-        oda: $("#oda").is(":checked"),
-
-        referenceNo: $("#referenceNo").val(),
-        remarks: $("#remarks").val(),
-
-        invoiceNumber: $("#invoiceNumber").val(),
-        emailId: $("#emailId").val(),
+        consigneeODAChargeApplicable: $("#oda").is(":checked") ? "Y" : "N",
 
         paymentMode: $("#paymentMode").val(),
-        receivedAmount: $("#receivedAmount").val(),
-        tariffAmount: $("#tariffAmount").val(),
-        cgst: $("#cgst").val(),
-        sgst: $("#sgst").val(),
-        igst: $("#igst").val(),
-        total: $("#total").val()
+        receivedAmount: parseFloat($("#receivedAmount").val()) || 0,
+        tariffAmount: parseFloat($("#tariffAmount").val()) || 0,
+        cgst: parseFloat($("#cgst").val()) || 0,
+        sgst: parseFloat($("#sgst").val()) || 0,
+        igst: parseFloat($("#igst").val()) || 0,
+        totalAmount: parseFloat($("#total").val()) || 0,
+
+        CODAmount: 0,
+        IsActive: "Y",
+        createdby: "admin"
     };
 
-    let type = id > 0 ? "PUT" : "POST";
-    let url = id > 0 ? API + "/" + id : API;
+    let type = isUpdate ? "PUT" : "POST";
+    let url = isUpdate ? API + "/" + id : API;
 
     $.ajax({
         url: url,
@@ -229,17 +245,24 @@ function saveData() {
 
         success: function (res) {
             let cbid = res?.cbid || res?.data?.cbid || id;
-            saveItems(cbid);
+
+            // 🔥 pass isUpdate flag
+            saveItems(cbid, isUpdate);
+        },
+        error: function (err) {
+            console.log("ERROR:", err.responseText);
+            Swal.fire("Error", "Bad Request", "error");
         }
     });
 }
 
 
 // ================= SAVE ITEMS =================
-function saveItems(cbid) {
+function saveItems(cbid, isUpdate) {
 
     let requests = [];
 
+    // DELETE
     deletedItems.forEach(x => {
         requests.push($.ajax({
             url: ITEM_API + "/" + x.cbIId,
@@ -247,42 +270,85 @@ function saveItems(cbid) {
         }));
     });
 
+    // INSERT / UPDATE
     items.forEach(x => {
 
-        x.cbid = cbid;
+        let obj = {
 
-        if (x.cbIId && x.cbIId > 0) {
+            cbIId: x.cbIId || 0,
+
+            // ✅ MUST MATCH MODEL
+            cbId: cbid,
+
+            // ✅ EXACT PROPERTY NAMES
+            InvoiceID: x.invoiceId ? parseInt(x.invoiceId) : null,
+            InvoiceDate: x.invoiceDate || null,
+
+            Description: x.description || "",
+            Amount: parseFloat(x.amount) || 0,
+
+            eWayBillNumber: x.ewayBill || "",
+            EWBDate: x.ewbDate || null,
+
+            IsActive: "Y"
+        };
+
+        if (obj.cbIId > 0) {
+            // UPDATE
             requests.push($.ajax({
-                url: ITEM_API + "/" + x.cbIId,
+                url: ITEM_API + "/" + obj.cbIId,
                 type: "PUT",
                 contentType: "application/json",
-                data: JSON.stringify(x)
+                data: JSON.stringify(obj)
             }));
         } else {
+            // INSERT
             requests.push($.ajax({
                 url: ITEM_API,
                 type: "POST",
                 contentType: "application/json",
-                data: JSON.stringify(x)
+                data: JSON.stringify(obj)
             }));
         }
     });
 
     if (requests.length === 0) {
-        Swal.fire("Success", "Saved Successfully", "success");
-        modal.hide();
-        loadData();
+        showSuccess(isUpdate);
         return;
     }
 
-    $.when.apply($, requests).then(() => {
-        Swal.fire("Success", "Saved Successfully", "success");
-        modal.hide();
-        loadData();
-    });
+    $.when.apply($, requests)
+        .then(() => {
+            showSuccess(isUpdate);
+        })
+        .fail((err) => {
+            console.log("ITEM ERROR:", err.responseText);
+            Swal.fire("Error", "Item Save Failed", "error");
+        });
 }
 
+function removeItem(i) {
 
+    let item = items[i];
+
+    if (item.cbIId && item.cbIId > 0) {
+        deletedItems.push(item);
+    }
+
+    items.splice(i, 1);
+    renderItems();
+}
+function showSuccess(isUpdate) {
+
+    Swal.fire(
+        "Success",
+        isUpdate ? "Updated Successfully" : "Saved Successfully",
+        "success"
+    );
+
+    modal.hide();
+    loadData();
+}
 // ================= EDIT =================
 function edit(id) {
 
@@ -295,23 +361,53 @@ function edit(id) {
         $("#bookingOffice").val(x.bookingOffice);
         $("#shipperName").val(x.shipperName);
         $("#docketType").val(x.docketType);
-
+        $("#invoiceNumber").val(x.invoiceNumber);
+        $("#emailId").val(x.emailId);
         $("#awb").val(x.awb);
         $("#bookingDate").val(formatDateInput(x.bookingDate));
         $("#origin").val(x.origin);
         $("#destination").val(x.destination);
 
+        $("#mode").val(x.mode);
+        $("#product").val(x.product);
+
         $("#pcs").val(x.pcs);
+        $("#actualWeight").val(x.actualWt);
+        $("#volumetric").val(x.volumetric == 1 ? "Y" : "N");
+        $("#volWeight").val(x.volWeight);
         $("#chargeWeight").val(x.chargeWeight);
 
-        $("#invoiceNumber").val(x.invoiceNumber);
-        $("#emailId").val(x.emailId);
+        $("#cMobile").val(x.consignorMobile);
+        $("#cName").val(x.consignorName);
+        $("#cAddress1").val(x.consignorAddress1);
+        $("#cAddress2").val(x.consignorAddress2);
+        $("#cCity").val(x.consignorCity);
+        $("#cPincode").val(x.consignorPincode);
+        $("#cState").val(x.consignorState);
 
+        $("#cnMobile").val(x.consigneeMobile);
+        $("#cnGst").val(x.consigneeGSTNo);
+        $("#cnName").val(x.consigneeName);
+        $("#cnAddress1").val(x.consigneeAddress1);
+        $("#cnAddress2").val(x.consigneeAddress2);
+        $("#cnCity").val(x.consigneeCity);
+        $("#cnPincode").val(x.consigneePincode);
+        $("#cnState").val(x.consigneeState);
+
+        $("#oda").prop("checked", x.consigneeODAChargeApplicable === "Y");
+
+        $("#paymentMode").val(x.paymentMode);
+
+        $("#receivedAmount").val(x.receivedAmount);
         $("#tariffAmount").val(x.tariffAmount);
+        $("#referenceNo").val(x.referenceNo);
+        $("#remarks").val(x.remarks);
+
         $("#cgst").val(x.cgst);
         $("#sgst").val(x.sgst);
         $("#igst").val(x.igst);
-        $("#total").val(x.total);
+
+        $("#total").val(x.totalAmount);
 
         loadItems(id);
 
@@ -319,36 +415,96 @@ function edit(id) {
     });
 }
 
-
 // ================= ITEMS =================
 function loadItems(cbid) {
 
-    $.get(ITEM_API, function (res) {
+    $.ajax({
+        url: ITEM_API + "/" + cbid,   // 🔥 IMPORTANT CHANGE
+        type: "GET",
+        success: function (res) {
 
-        let data = res?.data || res;
+            console.log("ITEM API RESPONSE:", res);
 
-        items = data.filter(x => x.cbid == cbid);
-        deletedItems = [];
+            let data = res?.data || res;
 
-        renderItems();
+            items = data.map(x => ({
+                cbIId: x.cbIId,
+                invoiceId: x.invoiceID,
+                invoiceDate: x.invoiceDate,
+                description: x.description,
+                amount: x.amount,
+                ewayBill: x.eWayBillNumber,
+                ewbDate: x.ewbDate,
+                cbid: x.cbId
+            }));
+
+            deletedItems = [];
+            renderItems();
+        },
+        error: function (err) {
+            console.log("LOAD ITEM ERROR:", err.responseText);
+            Swal.fire("Error", "Item load failed", "error");
+        }
     });
 }
 
+function renderItems() {
+
+    let html = "";
+
+    items.forEach((x, i) => {
+
+        html += `<tr>
+            <td>${i + 1}</td>
+            <td>${x.invoiceId || ''}</td>
+            <td>${formatDate(x.invoiceDate)}</td>
+            <td>${x.description || ''}</td>
+            <td>${x.amount || ''}</td>
+            <td>${x.ewayBill || ''}</td>
+            <td>${formatDate(x.ewbDate)}</td>
+            <td>
+                <button class="btn btn-warning btn-sm btn-item-edit" data-index="${i}">
+                    <i class="bi bi-pencil"></i>
+                </button>
+                <button class="btn btn-danger btn-sm btn-delete" data-index="${i}">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </td>
+        </tr>`;
+    });
+
+    $("#itemTable").html(html);
+}
 function addItem() {
 
     if (!$("#invoiceId").val()) return Swal.fire("Invoice ID required");
+
+    let editIndex = $("#invoiceId").data("edit-index");
 
     let item = {
         cbIId: 0,
         invoiceId: $("#invoiceId").val(),
         invoiceDate: $("#invoiceDate").val(),
         description: $("#description").val(),
-        amount: $("#amount").val(),
+        amount: parseFloat($("#amount").val()) || 0,
         ewayBill: $("#ewayBill").val(),
         ewbDate: $("#ewbDate").val()
     };
 
-    items.push(item);
+    // ✅ UPDATE EXISTING ITEM
+    if (editIndex !== undefined) {
+
+        item.cbIId = items[editIndex].cbIId; // keep id
+        items[editIndex] = item;
+
+        $("#invoiceId").removeData("edit-index");
+
+    } else {
+
+        // ✅ NEW ITEM
+        items.push(item);
+    }
+
     renderItems();
     clearItemInputs();
 }

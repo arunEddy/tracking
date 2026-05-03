@@ -85,8 +85,8 @@ namespace TrackingWebAPI.Services
                 existingcustomerDataUpdateAWB.ReturnProductName = customerDataUpdateAWB.ReturnProductName;
                 existingcustomerDataUpdateAWB.ReturnMode = customerDataUpdateAWB.ReturnMode;
                 existingcustomerDataUpdateAWB.ReturnProductType = customerDataUpdateAWB.ReturnProductType;
-                existingcustomerDataUpdateAWB.mdfby = customerDataUpdateAWB.mdfby;
-                existingcustomerDataUpdateAWB.mdfon = customerDataUpdateAWB.mdfon;
+                existingcustomerDataUpdateAWB.mfdby = customerDataUpdateAWB.mfdby;
+                existingcustomerDataUpdateAWB.mfdon = customerDataUpdateAWB.mfdon;
                 existingcustomerDataUpdateAWB.IsActive = customerDataUpdateAWB.IsActive;
                 await _context.SaveChangesAsync();
             }
