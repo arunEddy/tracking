@@ -323,10 +323,43 @@ function saveItems(cbid, isUpdate) {
         })
         .fail((err) => {
             console.log("ITEM ERROR:", err.responseText);
-            Swal.fire("Error", "Item Save Failed", "error");
+            if (!isUpdate) {
+                rollbackMain(cbid);
+            } 
+            else {
+                Swal.fire(
+                    "Warning",
+                    "Items failed but main record updated",
+                    "warning"
+                );
+            }
+            /*Swal.fire("Error", "Item Save Failed", "error");*/
         });
 }
+function rollbackMain(cbid) {
 
+    $.ajax({
+        url: API + "/" + cbid,
+        type: "DELETE",
+
+        success: function () {
+            Swal.fire(
+                "Rolled Back",
+                "Main record deleted due to item failure",
+                "error"
+            );
+            loadData();
+        },
+
+        error: function () {
+            Swal.fire(
+                "Critical Error",
+                "Item failed AND rollback failed!",
+                "error"
+            );
+        }
+    });
+}
 function removeItem(i) {
 
     let item = items[i];

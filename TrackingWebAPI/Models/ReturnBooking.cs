@@ -43,8 +43,8 @@ namespace TrackingWebAPI.Models
         public string? ReturnPickupCity { get; set; }
         public string? ReturnDestinationCity { get; set; }
         public string? ReturnRemarks { get; set; }
-        public decimal? ReturnPieces { get; set; }
-        public string? ReturnWeight { get; set; }
+        public string? ReturnPieces { get; set; }
+        public decimal? ReturnWeight { get; set; }
         public DateTime? ReturnDate { get; set; }
         public string? ReturnTime { get; set; }
         public string? ReturnPickupPincode { get; set; }

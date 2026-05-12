@@ -4,5 +4,198 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>ReturnBooking</h1>
+<!-- CSS & JS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<div class="container-fluid mt-2">
+
+    <div class="d-flex justify-content-between">
+        <h6 class="fw-bold">Return Booking</h6>
+        <button class="btn btn-primary btn-sm" id="btnAdd">
+            <i class="bi bi-plus"></i> Add
+        </button>
+    </div>
+
+    <table class="table table-bordered table-sm table-hover mt-2">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>AWB</th>
+                <th>Customer</th>
+                <th>Pickup City</th>
+                <th class="text-end">Action</th>
+            </tr>
+        </thead>
+        <tbody id="tblData"></tbody>
+    </table>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="bookingModal">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-header bg-danger text-white">
+                <h6>RETURN BOOKING</h6>
+                <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <input type="hidden" id="rbid">
+
+                <!-- HEADER -->
+                <div class="row g-2">
+
+                    <div class="col-md-2">
+                        <label>AWB Ref</label>
+                        <select id="AWBReference" class="form-select form-select-sm">
+                            <option value="AWB">AWB NO</option>
+                            <option value="REF">REFERENCE NO</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>AWB / Ref No <span style="color:red">*</span></label>
+                        <input id="AWBReferenceNo" class="form-control form-control-sm">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label>Booking Office</label>
+                        <input id="BookingOffice" class="form-control form-control-sm">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label>Pickup City <span style="color:red">*</span></label>
+                        <input id="PickupCity" class="form-control form-control-sm">
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Pickup Pincode <span style="color:red">*</span></label>
+                        <input id="PickupPincode" class="form-control form-control-sm">
+                    </div>
+
+                </div>
+
+                <!-- 3 BOX LAYOUT -->
+                <div class="row mt-2">
+
+                    <!-- AWB DETAILS -->
+                    <div class="col-md-4">
+                        <div class="border p-2 h-100">
+                            <b>AWB Details</b>
+
+                            <input id="ConsignorName" placeholder="Consignor Name *" class="form-control form-control-sm mt-1">
+                            <input id="DepttPersonName" placeholder="Deptt Person Name" class="form-control form-control-sm mt-1">
+
+                            <input type="date" id="BookingDate" class="form-control form-control-sm mt-1">
+                            <input type="date" id="ExpDeliveryDate" class="form-control form-control-sm mt-1">
+
+                            <input id="ExpDeliveryTime" type="time" placeholder="Time" class="form-control form-control-sm mt-1">
+
+                            <div class="row g-1 mt-1">
+                                <div class="col"><input id="Pcs" type="number" placeholder="Pcs" class="form-control form-control-sm"></div>
+                                <div class="col"><input id="ChargeWeight" type="number" placeholder="Charge Wt" class="form-control form-control-sm"></div>
+                            </div>
+
+                            <input id="MachineWeight" placeholder="Machine Wt" type="number"  class="form-control form-control-sm mt-1">
+                            <input id="ProductName" placeholder="Product Name" class="form-control form-control-sm mt-1">
+                            <input id="Mode" placeholder="Mode" class="form-control form-control-sm mt-1">
+                            <input id="CODAmount" placeholder="COD Amount" type="number" class="form-control form-control-sm mt-1">
+                        </div>
+                    </div>
+
+                    <!-- CONSIGNOR -->
+                    <div class="col-md-4">
+                        <div class="border p-2 h-100">
+                            <b>Consignor Details</b>
+
+                            <input id="bsName" placeholder="Name" class="form-control form-control-sm mt-1">
+                            <input id="Address1" placeholder="Address1" class="form-control form-control-sm mt-1">
+                            <input id="Address2" placeholder="Address2" class="form-control form-control-sm mt-1">
+                            <input id="City" placeholder="City" class="form-control form-control-sm mt-1">
+                            <input id="Pincode" placeholder="Pincode" class="form-control form-control-sm mt-1">
+                            <input id="bsState" placeholder="State" class="form-control form-control-sm mt-1">
+
+                            <div class="row g-1 mt-1">
+                                <div class="col"><input id="Phone" type="number" placeholder="Phone" class="form-control form-control-sm"></div>
+                                <div class="col"><input id="Mobile" type="number" placeholder="Mobile" class="form-control form-control-sm"></div>
+                            </div>
+
+                            <div class="form-check mt-1">
+                                <input type="checkbox" id="ODAChargeApplicable" class="form-check-input">
+                                <label class="form-check-label">ODA Charge Applicable</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CONSIGNEE -->
+                    <div class="col-md-4">
+                        <div class="border p-2 h-100">
+                            <b>Consignee Details</b>
+
+                            <input id="ConsigneeName" placeholder="Name" class="form-control form-control-sm mt-1">
+                            <input id="ConsigneeAddress1" placeholder="Address1" class="form-control form-control-sm mt-1">
+                            <input id="ConsigneeAddress2" placeholder="Address2" class="form-control form-control-sm mt-1">
+
+                            <div class="row g-1 mt-1">
+                                <div class="col"><input id="ReturnPhone" placeholder="Phone" class="form-control form-control-sm"></div>
+                                <div class="col"><input id="ReturnMobile" placeholder="Mobile" class="form-control form-control-sm"></div>
+                            </div>
+
+                            <input id="ReturnPincode" placeholder="Pincode" class="form-control form-control-sm mt-1">
+                            <input id="ReturnCity" placeholder="City" class="form-control form-control-sm mt-1">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RETURN DETAILS -->
+                <div class="border p-2 mt-2">
+                    <b>Return Details</b>
+
+                    <div class="row g-1">
+                        <div class="col"><input id="ReturnAWBNo" placeholder="AWB No" class="form-control form-control-sm"></div>
+                        <div class="col"><input id="ReturnPickupCity" placeholder="Pickup City" class="form-control form-control-sm"></div>
+                        <div class="col"><input id="ReturnPickupPincode" placeholder="Pickup Pincode" class="form-control form-control-sm"></div>
+                        <div class="col"><input id="ReturnDestinationCity" placeholder="Destination City" class="form-control form-control-sm"></div>
+                        <div class="col"><input id="ReturnDestinationPicode" placeholder="Destination Pincode" class="form-control form-control-sm"></div>
+                    </div>
+
+                    <div class="row g-1 mt-1">
+                        <div class="col"><input id="ReturnPieces" placeholder="Pieces" class="form-control form-control-sm"></div>
+                        <div class="col"><input id="ReturnWeight" type="number" placeholder="Weight" class="form-control form-control-sm"></div>
+                        <div class="col"><input type="date" id="ReturnDate" class="form-control form-control-sm"></div>
+                        <div class="col"><input id="ReturnTime" type="time" placeholder="Time" class="form-control form-control-sm"></div>
+                    </div>
+
+                    <div class="row g-1 mt-1">
+                        <div class="col"><input id="ReturnProductName" placeholder="Product Name" class="form-control form-control-sm"></div>
+                        <div class="col"><input id="ReturnMode" placeholder="Mode" class="form-control form-control-sm"></div>
+                        <div class="col"><input id="ReturnProductType" placeholder="Product Type" class="form-control form-control-sm"></div>
+                    </div>
+
+                    <input id="ReturnRemarks" placeholder="Remarks" class="form-control form-control-sm mt-1">
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-success btn-sm" id="btnSave">Save</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="~/js/ReturnBooking.js"></script>

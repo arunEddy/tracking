@@ -64,6 +64,18 @@ namespace TrackingWebAPI.Controllers
 
 
         }
+
+        [HttpGet("by-booking/{bseid}")]
+        public async Task<IActionResult> GetByBookingId(int bseid)
+        {
+            var items = await _bookingSelfItemDetails.GetByBookingId(bseid);
+
+            return Ok(new
+            {
+                success = true,
+                data = items
+            });
+        }
         [HttpPost]
         public async Task<IActionResult> CreateBookingSelfItemDetails(TrackingWebAPI.Models.BookingSelfItemDetails stockout)
         {

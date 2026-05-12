@@ -18,7 +18,7 @@ namespace TrackingWebAPI.Models
         public decimal? ActualWeight { get; set; }
         public int? Pcs { get; set; }
         public decimal? ChargeWt { get; set; }
-        public decimal? Volumetric { get; set; }
+        public int? Volumetric { get; set; }
         public decimal? VolWt { get; set; }
         public string? ProductName { get; set; }
         public decimal? TopayAmount { get; set; }

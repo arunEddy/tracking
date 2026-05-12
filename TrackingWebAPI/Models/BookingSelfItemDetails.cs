@@ -7,6 +7,7 @@ namespace TrackingWebAPI.Models
     {
         [Key]
         public int btdId { get; set; }
+        public int bseid { get; set; }
         public int? PartnerRefNo { get; set; }
         public decimal? eWayBillNumber { get; set; }
         public DateTime? EWBValidDate { get; set; }

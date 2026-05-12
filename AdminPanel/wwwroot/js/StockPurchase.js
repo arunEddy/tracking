@@ -102,11 +102,11 @@ function saveData() {
         stpId: id,
         officeName: $("#officeName").val(),
         vendorName: $("#vendorName").val(),
-        purchaseDate: $("#purchaseDate").val(),
+        purchaseDate: $("#purchaseDate").val() || null,
         itemName: $("#itemName").val(),
         quantity: parseInt($("#qty").val()),
         purchaseRate: parseFloat($("#purchaseRate").val()),
-        vendorRate: $("#vendorRate").val(),
+        vendorRate: $("#vendorRate").val() || null,
         startNo: $("#startNo").val(),
         endNo: $("#endNo").val(),
         bookRequired: $("#bookRequired").is(":checked") ? "true" : "false"

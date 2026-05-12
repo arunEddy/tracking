@@ -64,6 +64,9 @@ builder.Services.AddScoped<TrackingWebAPI.Interfaces.IUrgentDeliveryAlertEntry, 
 builder.Services.AddScoped<TrackingWebAPI.Interfaces.IAWBPrint, AWBPrintServices>();
 builder.Services.AddScoped<TrackingWebAPI.Interfaces.IDRS, DRSServices>();
 builder.Services.AddScoped<TrackingWebAPI.Interfaces.IStockIssueToEmployee, StockIssueToEmployeeServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.INonDelivery, NonDeliveryServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.IReturnToCustomerManifesting, ReturnToCustomerManifestingServices>();
+builder.Services.AddScoped<TrackingWebAPI.Interfaces.IFirstMileRTO, FirstMileRTOServices>();
 //Code added by Arun on 21-03-2026 for Master Menu DI   
 builder.Services.AddScoped<ICompanyMaster, CompanyServices>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

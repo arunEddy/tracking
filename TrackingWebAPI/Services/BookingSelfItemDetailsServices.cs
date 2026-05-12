@@ -28,6 +28,13 @@ namespace TrackingWebAPI.Services
            .FirstOrDefaultAsync();
         }
 
+        public async Task<List<BookingSelfItemDetails>> GetByBookingId(int bseid)
+        {
+            return await _context.bookingSelfItemDetails
+                .Where(x => x.bseid == bseid && (x.EndDate == null || x.EndDate == ""))
+                .ToListAsync();
+        }
+
         public async Task<Models.BookingSelfItemDetails> CreateBookingSelfItemDetails(Models.BookingSelfItemDetails customerDataUpdateAWB)
         {
             await _context.bookingSelfItemDetails.AddAsync(customerDataUpdateAWB);
@@ -66,5 +73,7 @@ namespace TrackingWebAPI.Services
             }
             return customerDataUpdateAWB;
         }
+
+     
     }
 }

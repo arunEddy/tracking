@@ -6,7 +6,13 @@ const API = AppConfig.apiBaseUrl + "/api/BookingSelf";
 const ITEM_API = AppConfig.apiBaseUrl + "/api/BookingSelfItemDetails";
 
 $(document).ready(function () {
+    $("#ActualWeight, #VolWt").on("input", function () {
+        let actual = parseFloat($("#ActualWeight").val()) || 0;
+        let vol = parseFloat($("#VolWt").val()) || 0;
 
+        let charge = Math.max(actual, vol);
+        $("#ChargeWt").val(charge);
+    });
     let el = document.getElementById('bookingModal');
     if (el) modal = new bootstrap.Modal(el);
 
@@ -33,7 +39,15 @@ $(document).ready(function () {
     });
 });
 
+function calculateChargeWt() {
+    let actual = parseFloat($("#ActualWeight").val()) || 0;
+    let vol = parseFloat($("#VolWt").val()) || 0;
 
+    $("#ChargeWt").val(Math.max(actual, vol));
+}
+
+// event binding
+$("#ActualWeight, #VolWt").on("input", calculateChargeWt);
 // ================= LOAD =================
 function loadData() {
 
@@ -49,7 +63,6 @@ function loadData() {
                 <td>${x.awb || ''}</td>
                 <td>${x.customerName || ''}</td>
                 <td>${x.origin || ''}</td>
-                <td>${x.destination || ''}</td>
                 <td class="text-end">
                     <button class="btn btn-warning btn-sm btn-edit" data-id="${x.bseid}">
                         <i class="bi bi-pencil"></i>
@@ -112,7 +125,7 @@ function saveData() {
 
         Pcs: parseInt($("#Pcs").val()) || 0,
         ActualWeight: parseFloat($("#ActualWeight").val()) || 0,
-        Volumetric: $("#Volumetric").val(),
+        Volumetric: parseFloat($("#Volumetric").val()) || 0,
         VolWt: parseFloat($("#VolWt").val()) || 0,
         ChargeWt: parseFloat($("#ChargeWt").val()) || 0,
 
@@ -134,7 +147,7 @@ function saveData() {
         ConsigneePincode: $("#ConsigneePincode").val(),
         City: $("#City").val(),
 
-        MasterReferenceNo: $("#MasterReferenceNo").val(),
+        MasterReferenceNo: parseInt($("#MasterReferenceNo").val()) || 0,
         Remarks: $("#Remarks").val(),
 
         IsActive: "Y"
@@ -164,6 +177,7 @@ function saveData() {
 
 
 // ================= SAVE ITEMS =================
+//Arun 
 function saveItems(mainId, isUpdate) {
 
     let requests = [];
@@ -180,7 +194,7 @@ function saveItems(mainId, isUpdate) {
     items.forEach(x => {
 
         let obj = {
-
+            
             btdId: x.btdId || 0,
             PartnerRefNo: x.PartnerRefNo,
             eWayBillNumber: x.eWayBillNumber,
@@ -225,43 +239,116 @@ function saveItems(mainId, isUpdate) {
     });
 }
 
-
-// ================= EDIT =================
 function edit(id) {
 
     $.get(API + "/" + id, function (res) {
 
         let x = res?.data || res;
 
+        // ===== BASIC =====
         $("#bseid").val(x.bseid);
+        $("#BookingOffice").val(x.bookingOffice);
         $("#CustomerName").val(x.customerName);
+        $("#DocketType").val(x.docketType);
         $("#AWB").val(x.awb);
+        $("#BookDate").val(formatDateInput(x.bookDate));
+
+        // ===== ROUTE =====
         $("#Origin").val(x.origin);
         $("#Destination").val(x.destination);
+        $("#Mode").val(x.mode);
+
+        // ===== WEIGHT =====
         $("#Pcs").val(x.pcs);
+        $("#ActualWeight").val(x.actualWeight);
+        $("#Volumetric").val(x.volumetric);
+        $("#VolWt").val(x.volWt);
         $("#ChargeWt").val(x.chargeWt);
 
+        // ===== PRODUCT =====
+        $("#ProductName").val(x.productName);
+        $("#TopayAmount").val(x.topayAmount);
+        $("#ProductType").val(x.productType);
+
+        // ===== CONSIGNOR =====
+        $("#ConsignorName").val(x.consignorName);
+        $("#PickupCity").val(x.pickupCity);
+        $("#PickupPincode").val(x.pickupPincode);
+        $("#Address1").val(x.address1);
+        $("#Address2").val(x.address2);
+
+        // ===== CONSIGNEE =====
+        $("#ConsigneeName").val(x.consigneeName);
+        $("#ConsigneeAddress1").val(x.consigneeAddress1);
+        $("#ConsigneeAddress2").val(x.consigneeAddress2);
+        $("#ConsigneePhone").val(x.consigneePhone);
+        $("#Mobile").val(x.mobile);
+        $("#ConsigneePincode").val(x.consigneePincode);
+        $("#City").val(x.city);
+
+        // ===== EXTRA =====
+        $("#MasterReferenceNo").val(x.masterReferenceNo);
+        $("#Remarks").val(x.remarks);
+
+        // ===== LOAD CHILD =====
         loadItems(id);
 
         modal.show();
+
+        calculateChargeWt();
     });
 }
 
-
-// ================= LOAD ITEMS =================
 function loadItems(id) {
 
-    $.get(ITEM_API + "/" + id, function (res) {
+    $.ajax({
+        url: ITEM_API + "/" + id,   // correct route
+        type: "GET",
+        success: function (res) {
 
-        let data = res?.data || res;
+            console.log("ITEM API RESPONSE:", res);
 
-        items = data;
-        deletedItems = [];
+            // 🔥 IMPORTANT FIX
+            let data = res?.data || [];
 
-        renderItems();
+            // अगर single object आया तो array बनाओ
+            if (!Array.isArray(data)) {
+                data = [data];
+            }
+
+            items = data.map(x => ({
+                btdId: x.btdId,
+                PartnerRefNo: x.partnerRefNo,
+                eWayBillNumber: x.eWayBillNumber,
+                EWBValidDate: formatDateInput(x.ewbValidDate),
+
+                InvoiceID: x.invoiceID,
+                InvoiceDate: formatDateInput(x.invoiceDate),
+                Description: x.description,
+                InvoiceAmount: x.invoiceAmount,
+                CODAmount: x.codAmount
+            }));
+
+            deletedItems = [];
+
+            renderItems();
+        },
+        error: function (err) {
+            console.log("LOAD ITEM ERROR:", err.responseText);
+            Swal.fire("Error", "Item load failed", "error");
+        }
     });
 }
+function formatDateInput(date) {
+    if (!date) return '';
 
+    let d = new Date(date);
+
+    let month = ('0' + (d.getMonth() + 1)).slice(-2);
+    let day = ('0' + d.getDate()).slice(-2);
+
+    return d.getFullYear() + '-' + month + '-' + day;
+}
 
 // ================= ITEM =================
 function addItem() {
@@ -352,20 +439,61 @@ function deleteRec(id) {
 
     Swal.fire({
         title: "Delete?",
+        text: "This will delete main + all item details",
+        icon: "warning",
         showCancelButton: true
     }).then(res => {
 
-        if (res.isConfirmed) {
+        if (!res.isConfirmed) return;
 
-            $.ajax({
-                url: API + "/" + id,
-                type: "DELETE",
-                success: () => {
-                    Swal.fire("Deleted");
-                    loadData();
-                }
-            });
-        }
+        // 🔥 STEP 1: get all items for this booking
+        $.ajax({
+            url: ITEM_API + "/by-booking/" + id,   // ⚠️ your custom API
+            type: "GET",
+            success: function (response) {
+
+                let data = response?.data || [];
+
+                // ensure array
+                if (!Array.isArray(data)) data = [data];
+
+                let deleteRequests = [];
+
+                // 🔥 STEP 2: delete all child records
+                data.forEach(x => {
+                    if (x.btdId) {
+                        deleteRequests.push(
+                            $.ajax({
+                                url: ITEM_API + "/" + x.btdId,
+                                type: "DELETE"
+                            })
+                        );
+                    }
+                });
+
+                // 🔥 STEP 3: after child delete → delete main
+                $.when.apply($, deleteRequests).always(function () {
+
+                    $.ajax({
+                        url: API + "/" + id,
+                        type: "DELETE",
+                        success: () => {
+                            Swal.fire("Deleted", "Main + Items deleted", "success");
+                            loadData();
+                        },
+                        error: (err) => {
+                            console.log(err.responseText);
+                            Swal.fire("Error", "Main delete failed", "error");
+                        }
+                    });
+
+                });
+            },
+            error: function (err) {
+                console.log("FETCH ITEM ERROR:", err.responseText);
+                Swal.fire("Error", "Failed to fetch item details", "error");
+            }
+        });
     });
 }
 

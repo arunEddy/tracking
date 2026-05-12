@@ -6,6 +6,7 @@ namespace TrackingWebAPI.Interfaces
     {
         Task<IEnumerable<BookingSelfItemDetails>> GetAllBookingSelfItemDetails();
         Task<BookingSelfItemDetails> GetBookingSelfItemDetailsId(int id);
+        Task<List<BookingSelfItemDetails>> GetByBookingId(int id);
         Task<BookingSelfItemDetails> CreateBookingSelfItemDetails(BookingSelfItemDetails BookingSelfItemDetails);
         Task<BookingSelfItemDetails> UpdateBookingSelfItemDetails(int id, BookingSelfItemDetails BookingSelfItemDetails);
         Task<BookingSelfItemDetails> DeleteBookingSelfItemDetails(int id);

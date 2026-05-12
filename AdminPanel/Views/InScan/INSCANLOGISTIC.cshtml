@@ -54,7 +54,7 @@
                 <th>#</th>
                 <th>AWB</th>
                 <th>Customer</th>
-                <th>City</th>
+                <th>Origin</th>
                 <th class="text-end">Action</th>
             </tr>
         </thead>
@@ -130,15 +130,38 @@
                                 <input id="Mode" class="form-control form-control-sm">
                             </div>
 
+                            <!-- PCS + WEIGHT -->
                             <div class="row g-1">
                                 <div class="col">
                                     <label>Pcs *</label>
-                                    <input id="Pcs" class="form-control form-control-sm">
+                                    <input id="Pcs" type="number" class="form-control form-control-sm">
                                 </div>
                                 <div class="col">
                                     <label>Charge Wt *</label>
-                                    <input id="ChargeWt" class="form-control form-control-sm">
+                                    <input id="ChargeWt" type="number" class="form-control form-control-sm">
                                 </div>
+                            </div>
+
+                            <!-- NEW FIELDS -->
+                            <div class="row g-1 mt-1">
+                                <div class="col">
+                                    <label>Actual Wt</label>
+                                    <input id="ActualWeight" type="number" class="form-control form-control-sm">
+                                </div>
+
+                                <div class="col">
+                                    <label>Volumetric</label>
+                                    <select id="Volumetric" class="form-select form-select-sm">
+                                        <option value="">--</option>
+                                        <option value="1">YES</option>
+                                        <option value="0">NO</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mt-1">
+                                <label>Vol Wt</label>
+                                <input id="VolWt" type="number" class="form-control form-control-sm">
                             </div>
 
                             <div class="mt-1">
@@ -147,8 +170,13 @@
                             </div>
 
                             <div class="mt-1">
+                                <label>Product Type</label>
+                                <input id="ProductType" class="form-control form-control-sm">
+                            </div>
+
+                            <div class="mt-1">
                                 <label>Topay Amount</label>
-                                <input id="TopayAmount" class="form-control form-control-sm">
+                                <input id="TopayAmount" type="number" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -165,12 +193,12 @@
 
                             <div class="mb-1">
                                 <label>Pickup City *</label>
-                                <input id="PickupCity" class="form-control form-control-sm">
+                                <input id="PickupCity"  class="form-control form-control-sm">
                             </div>
 
                             <div class="mb-1">
                                 <label>Pickup Pincode *</label>
-                                <input id="PickupPincode" class="form-control form-control-sm">
+                                <input id="PickupPincode" type="number" class="form-control form-control-sm">
                             </div>
 
                             <input id="Address1" placeholder="Address1" class="form-control form-control-sm mb-1">
@@ -190,17 +218,17 @@
 
                             <div class="mb-1">
                                 <label>Phone</label>
-                                <input id="ConsigneePhone" class="form-control form-control-sm">
+                                <input id="ConsigneePhone" type="number" class="form-control form-control-sm">
                             </div>
 
                             <div class="mb-1">
                                 <label>Mobile</label>
-                                <input id="Mobile" class="form-control form-control-sm">
+                                <input id="Mobile" type="number" class="form-control form-control-sm">
                             </div>
 
                             <div class="mb-1">
                                 <label>Pincode *</label>
-                                <input id="ConsigneePincode" class="form-control form-control-sm">
+                                <input id="ConsigneePincode" type="number" class="form-control form-control-sm">
                             </div>
 
                             <input id="ConsigneeAddress1" placeholder="Address1" class="form-control form-control-sm mb-1">
@@ -218,7 +246,7 @@
                 <!-- REF -->
                 <div class="row mt-2">
                     <div class="col-md-6">
-                        <input id="MasterReferenceNo" placeholder="Master Reference No" class="form-control form-control-sm">
+                        <input id="MasterReferenceNo" type="number" placeholder="Master Reference No" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-6">
                         <input id="Remarks" placeholder="Remarks" class="form-control form-control-sm">

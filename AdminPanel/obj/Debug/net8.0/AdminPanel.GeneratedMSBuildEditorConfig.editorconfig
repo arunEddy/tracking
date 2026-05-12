@@ -92,6 +92,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVsaXZlcnlCb3lNYXN0ZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/DRS/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFJTXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/AWBPrint.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXEFXQlByaW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -146,6 +150,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/InScan/WMSStockUploadWithCustomerWise.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5TY2FuXFdNU1N0b2NrVXBsb2FkV2l0aEN1c3RvbWVyV2lzZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/NonDelivery/FirstMileRTO.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm9uRGVsaXZlcnlcRmlyc3RNaWxlUlRPLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/NonDelivery/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm9uRGVsaXZlcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/NonDelivery/ReturnToCustomerManifesting.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm9uRGVsaXZlcnlcUmV0dXJuVG9DdXN0b21lck1hbmlmZXN0aW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Arun Kumar/Downloads/TrackingArunFile/AdminPanel/Views/OfficeRequest/Index.cshtml]

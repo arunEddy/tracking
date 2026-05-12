@@ -60,6 +60,10 @@ namespace DALCLASS.DBContact
         public DbSet<TrackingWebAPI.Models.UrgentDeliveryAlertEntry> urgentDeliveryAlertEntry { get; set; }
         public DbSet<TrackingWebAPI.Models.AWBPrint> aWBPrint { get; set; }
         public DbSet<TrackingWebAPI.Models.DRS> dRS { get; set; }
+
+        public DbSet<TrackingWebAPI.Models.NonDelivery> nonDelivery { get; set; }
+        public DbSet<TrackingWebAPI.Models.ReturnToCustomerManifesting> returnToCustomerManifesting { get; set; }
+        public DbSet<TrackingWebAPI.Models.FirstMileRTO> firstMileRTO { get; set; }
         //Added by Arun for Master Menu on 21-03-2026
     }
 }
